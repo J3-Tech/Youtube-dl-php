@@ -1,0 +1,19 @@
+{
+    "name": "chellem/youtube-downloader",
+    "description": "PHP library to download video",
+    "keywords": ["youtube", "download"],
+    "type": "library",
+    "authors": [
+        {
+            "name": "Chellem"
+        }
+    ],
+    "require": {
+        "symfony/process": ">2.3"
+    },
+    "autoload": {
+        "psr-0": {
+            "Youtubedl": "lib/"
+        }
+    }
+}
