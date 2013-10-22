@@ -4,6 +4,8 @@ This library is a PHP implementation of [Youtube-dl](https://github.com/rg3/yout
 
 ## Installation
 
+[Youtube-dl](https://github.com/rg3/youtube-dl) has must be installed first.
+
 Installation using [Composer](https://getcomposer.org):
 
 ```json
