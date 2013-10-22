@@ -2,4 +2,6 @@
 
 namespace Youtubedl\Option;
 
-abstract class Base{}
+abstract class Base{
+	
+}

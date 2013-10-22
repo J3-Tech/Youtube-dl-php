@@ -2,10 +2,19 @@
 
 namespace Youtubedl\Option;
 
-class Authentication extends Base{
-	private $username;
-	private $password;
-	private $videoPassword;
+class General extends Base{
+	private $help;
+	private $ignoreErrors;
+	private $abortOnError;
+	private $dumpUserAgent;
+	private $userAgent;
+	private $referer;
+	private $listExtractors;
+	private $extractorDescriptions;
+	private $proxy;
+	private $noCheckCertificate;
+	private $cacheDir;
+	private $noCacheDir;
 
 	public function __toString(){
 		$output='';

@@ -4,13 +4,13 @@ namespace Youtubedl\Option;
 
 class Download extends Base{
 
-	private $rate;
+	private $rateLimit;
 	private $retries;
 	private $bufferSize;
-	private $noResizeBuffer;
+	private $noResizeBuffer=true;
 
 	public function setRate($rate){
-		$this->rate=$rate;
+		$this->rateLimit=$rate;
 
 		return $this;
 	}
@@ -31,12 +31,17 @@ class Download extends Base{
 		$this->noResizeBuffer=true;
 	}
 
-	/*public function __invoke(){
-		$options="";
-		foreach (get_class_vars($this) as $var) {
-			if($this->$var){
-				$options.="--{$var}"
+	public function __toString(){
+		$output='';
+		foreach (get_object_vars($this) as $key=>$var) {
+			$option=$key;
+			if(preg_match("/[A-Z]/",$key,$upper)){
+				$option=str_replace($upper[0],'-'.strtolower($upper[0]),$key);
+			}
+			if($this->$key){
+				$output.="--{$option} {$this->$key} ";
 			}
 		}
-	}*/
+		return $output;
+	}
 }
