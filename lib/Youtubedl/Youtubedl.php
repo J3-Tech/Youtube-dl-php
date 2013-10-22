@@ -9,6 +9,7 @@ use Youtubedl\Option\Format;
 use Youtubedl\Option\PostProcessing;
 use Youtubedl\Option\Verbosity;
 use Youtubedl\Option\Video;
+use Youtubedl\Option\General;
 
 class Youtubedl extends Client{
 
@@ -21,10 +22,6 @@ class Youtubedl extends Client{
 	private $postProcessing;
 	private $subtitle;
 	private $video;
-
-	/*public function getDownloadOption(){
-		return ($this->download) ? $this->download:$this->download=new Download();
-	}*/
 
 	public function __call($method,$args){
 		preg_match("/get([A-Za-z]+)Option/",$method,$match);
@@ -41,6 +38,8 @@ class Youtubedl extends Client{
 				return $this->verbosity ? $this->Verbosity:$this->verbosity=new Verbosity();
 			case 'video':
 				return $this->video? $this->video:$this->video=new Video();
+			default:
+				return $this->option ? $this->option:$this->option=new General();
 		}
 	}
 
