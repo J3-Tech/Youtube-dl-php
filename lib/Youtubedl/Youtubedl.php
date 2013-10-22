@@ -2,56 +2,36 @@
 
 namespace Youtubedl;
 
-use Symfony\Component\Process\Process;
+class Youtubedl extends Client{
 
-class Youtubedl{
-
-	protected $async=false;
-	protected $extractors=array();
 	protected $links=array();
 	protected $output;
 
-	public function __construct($link=null,$output=null){
-		$process=new Process("youtube-dl --list-extractors");
-		$process->run();
+	public function getExtractors($description=false){
+		if($description){
+			return array_filter(explode("\n",parent::run('--extractor-descriptions')));
+		}
 
-		if (!$process->isSuccessful()) {
-		    throw new \RuntimeException($process->getErrorOutput());
-		}
-		$this->extractors=explode("\n",$process->getOutput());
-		if($output){
-			$this->output=$output;
-		}else{
-			$this->output=sys_get_temp_dir();
-		}
-		$this->link=$link;
+		return array_filter(explode("\n", parent::run('--list-extractors')));
 	}
 
-	public function isAsync($bool=true){
-		$this->async=$bool;
+	public function getUserAgent(){
+		return parent::run('--dump-user-agent');
+	}
+
+	public function setOutput($output){
+		$this->output=$output;
 
 		return $this;
 	}
 
-	public function getExtractors(){
-		return $this->extractors;
-	}
-
-	public function download($verbose=false){
-		$process = new Process("youtube-dl -o{$this->output}/\"%(title)s.%(ext)s\" {$this->link}");
-		if($verbose){
-			$process->run(function($type,$buffer){
-				if (Process::ERR === $type) {
-			        echo 'ERR > '.$buffer;
-			    } else {
-			        echo 'OUT > '.$buffer;
-			    }
-			});
-		}elseif($this->async){
-			$process->start();
-		}else{
-			$process->run();
+	public function download($link){
+		$cmd=null;
+		if($this->output){
+			$cmd="-o{$this->output}/\"%(title)s.%(ext)s\" "; 
 		}
+
+		return parent::run($cmd.$link);
 	}
 
 }
