@@ -20,5 +20,7 @@ Installation using [Composer](https://getcomposer.org):
 use Youtubedl\Youtubedl;
 
 $youtubedl=new Youtubedl();
-$youtubedl->download('BaW_jenozKc')
+$youtubedl->getFilesystemOption()
+          ->setOutput("\"/tmp/%(title)s.%(ext)s\"");
+$youtubedl->download('BaW_jenozKc');
 ```
