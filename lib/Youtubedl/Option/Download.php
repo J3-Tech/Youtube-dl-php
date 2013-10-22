@@ -1,6 +1,6 @@
 <?php
 
-namespace Youtubedl\Options;
+namespace Youtubedl\Option;
 
 class Download extends Base{
 

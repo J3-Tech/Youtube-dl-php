@@ -1,5 +1,5 @@
 <?php
 
-namespace Youtubedl\Options
+namespace Youtubedl\Option;
 
 class Authentication extends Base{}
