@@ -11,6 +11,7 @@ use Youtubedl\Option\PostProcessing;
 use Youtubedl\Option\Verbosity;
 use Youtubedl\Option\Video;
 use Youtubedl\Option\General;
+use Youtubedl\Exceptions\YoutubedlException;
 
 class Client
 {
@@ -88,7 +89,7 @@ class Client
             ($this->async) ? $process->start():$process->run();
         }
         if (!$process->isSuccessful()) {
-            throw new \RuntimeException($process->getErrorOutput());
+            throw new YoutubedlException($process->getErrorOutput());
         }
 
         return trim($process->getOutput());
