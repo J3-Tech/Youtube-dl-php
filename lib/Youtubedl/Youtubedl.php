@@ -2,31 +2,35 @@
 
 namespace Youtubedl;
 
-class Youtubedl extends Client{
+class Youtubedl extends Client
+{
+    protected $links=array();
+    protected $output;
 
-	protected $links=array();
-	protected $output;
+    public function getExtractors($description=false)
+    {
+        if ($description) {
+            return array_filter(explode("\n",parent::run('extractor-descriptions')));
+        }
 
-	public function getExtractors($description=false){
-		if($description){
-			return array_filter(explode("\n",parent::run('extractor-descriptions')));
-		}
+        return array_filter(explode("\n", parent::run('list-extractors')));
+    }
 
-		return array_filter(explode("\n", parent::run('list-extractors')));
-	}
+    public function getUserAgent()
+    {
+        return parent::run('dump-user-agent');
+    }
 
-	public function getUserAgent(){
-		return parent::run('dump-user-agent');
-	}
+    public function setOutput($output)
+    {
+        $this->output=$output;
 
-	public function setOutput($output){
-		$this->output=$output;
+        return $this;
+    }
 
-		return $this;
-	}
-
-	public function download($link){
-		return parent::run($link);
-	}
+    public function download($link)
+    {
+        return parent::run($link);
+    }
 
 }

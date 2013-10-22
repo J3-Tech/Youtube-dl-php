@@ -2,22 +2,56 @@
 
 namespace Youtubedl\Option;
 
-class Authentication extends Base{
-	private $username;
-	private $password;
-	private $videoPassword;
+class Authentication extends Base
+{
+    protected $password;
+    protected $username;
+    protected $videoPassword;
 
-	public function __toString(){
-		$output='';
-		foreach (get_object_vars($this) as $key=>$var) {
-			$option=$key;
-			if(preg_match("/[A-Z]/",$key,$upper)){
-				$option=str_replace($upper[0],'-'.strtolower($upper[0]),$key);
-			}
-			if($this->$key){
-				$output.="--{$option} {$this->$key} ";
-			}
-		}
-		return $output;
-	}
+    public function __toString()
+    {
+        return parent::format($this);
+    }
+
+    /**
+     * Sets the value of username.
+     *
+     * @param mixed $username the username
+     *
+     * @return self
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Sets the value of password.
+     *
+     * @param mixed $password the password
+     *
+     * @return self
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Sets the value of videoPassword.
+     *
+     * @param mixed $videoPassword the video password
+     *
+     * @return self
+     */
+    public function setVideoPassword($videoPassword)
+    {
+        $this->videoPassword = $videoPassword;
+
+        return $this;
+    }
 }

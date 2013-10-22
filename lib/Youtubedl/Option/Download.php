@@ -2,46 +2,71 @@
 
 namespace Youtubedl\Option;
 
-class Download extends Base{
+class Download extends Base
+{
+    protected $bufferSize;
+    protected $noResizeBuffer;
+    protected $rateLimit;
+    protected $retries;
 
-	private $rateLimit;
-	private $retries;
-	private $bufferSize;
-	private $noResizeBuffer=true;
+    public function __toString()
+    {
+        return parent::format($this);
+    }
 
-	public function setRate($rate){
-		$this->rateLimit=$rate;
+    /**
+     * Sets the value of rateLimit.
+     *
+     * @param mixed $rateLimit the rate limit
+     *
+     * @return self
+     */
+    public function setRateLimit($rateLimit)
+    {
+        $this->rateLimit = $rateLimit;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function setRetries($retries){
-		$this->retries=$retries;
+    /**
+     * Sets the value of retries.
+     *
+     * @param mixed $retries the retries
+     *
+     * @return self
+     */
+    public function setRetries($retries)
+    {
+        $this->retries = $retries;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function setBufferSize($buffer){
-		$this->bufferSize=$size;
+    /**
+     * Sets the value of bufferSize.
+     *
+     * @param mixed $bufferSize the buffer size
+     *
+     * @return self
+     */
+    public function setBufferSize($bufferSize)
+    {
+        $this->bufferSize = $bufferSize;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	private function setNoResizeBuffer(){
-		$this->noResizeBuffer=true;
-	}
+    /**
+     * Sets the value of noResizeBuffer.
+     *
+     * @param mixed $noResizeBuffer the no resize buffer
+     *
+     * @return self
+     */
+    public function setNoResizeBuffer($bool=true)
+    {
+        $this->noResizeBuffer = $bool;
 
-	public function __toString(){
-		$output='';
-		foreach (get_object_vars($this) as $key=>$var) {
-			$option=$key;
-			if(preg_match("/[A-Z]/",$key,$upper)){
-				$option=str_replace($upper[0],'-'.strtolower($upper[0]),$key);
-			}
-			if($this->$key){
-				$output.="--{$option} {$this->$key} ";
-			}
-		}
-		return $output;
-	}
+        return $this;
+    }
 }

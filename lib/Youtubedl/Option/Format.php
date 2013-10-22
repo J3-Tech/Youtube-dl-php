@@ -2,24 +2,86 @@
 
 namespace Youtubedl\Option;
 
-class Format extends Base{
-	private $format;
-	private $allFormat;
-	private $preferFreeFormats;
-	private $maxQuality;
-	private $listFormats;
+class Format extends Base
+{
+    protected $allFormat;
+    protected $format;
+    protected $listFormats;
+    protected $maxQuality;
+    protected $preferFreeFormats;
 
-	public function __toString(){
-		$output='';
-		foreach (get_object_vars($this) as $key=>$var) {
-			$option=$key;
-			if(preg_match("/[A-Z]/",$key,$upper)){
-				$option=str_replace($upper[0],'-'.strtolower($upper[0]),$key);
-			}
-			if($this->$key){
-				$output.="--{$option} {$this->$key} ";
-			}
-		}
-		return $output;
-	}
+    public function __toString()
+    {
+        return parent::format($this);
+    }
+
+    /**
+     * Sets the value of format.
+     *
+     * @param mixed $format the format
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->format = $format;
+
+        return $this;
+    }
+
+    /**
+     * Sets the value of allFormat.
+     *
+     * @param mixed $allFormat the all format
+     *
+     * @return self
+     */
+    public function setAllFormat($bool=true)
+    {
+        $this->allFormat = $bool;
+
+        return $this;
+    }
+
+    /**
+     * Sets the value of preferFreeFormats.
+     *
+     * @param mixed $preferFreeFormats the prefer free formats
+     *
+     * @return self
+     */
+    public function setPreferFreeFormats($bool=true)
+    {
+        $this->preferFreeFormats = $bool;
+
+        return $this;
+    }
+
+    /**
+     * Sets the value of maxQuality.
+     *
+     * @param mixed $maxQuality the max quality
+     *
+     * @return self
+     */
+    public function setMaxQuality($maxQuality)
+    {
+        $this->maxQuality = $maxQuality;
+
+        return $this;
+    }
+
+    /**
+     * Sets the value of listFormats.
+     *
+     * @param mixed $listFormats the list formats
+     *
+     * @return self
+     */
+    public function setListFormats($bool=true)
+    {
+        $this->listFormats = $bool;
+
+        return $this;
+    }
 }

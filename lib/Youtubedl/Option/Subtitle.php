@@ -2,25 +2,101 @@
 
 namespace Youtubedl\Option;
 
-class Subtitle extends Base{
-	private $writeSub;
-	private $writeAutoSub;
-	private $allSub;
-	private $listSubs;
-	private $subFormat;
-	private $subLangs;
+class Subtitle extends Base
+{
+    protected $allSub;
+    protected $listSubs;
+    protected $subFormat;
+    protected $subLangs;
+    protected $writeAutoSub;
+    protected $writeSub;
 
-	public function __toString(){
-		$output='';
-		foreach (get_object_vars($this) as $key=>$var) {
-			$option=$key;
-			if(preg_match("/[A-Z]/",$key,$upper)){
-				$option=str_replace($upper[0],'-'.strtolower($upper[0]),$key);
-			}
-			if($this->$key){
-				$output.="--{$option} {$this->$key} ";
-			}
-		}
-		return $output;
-	}
+    public function __toString()
+    {
+        return parent::format($this);
+    }
+
+    /**
+     * Sets the value of writeSub.
+     *
+     * @param mixed $writeSub the write sub
+     *
+     * @return self
+     */
+    public function setWriteSub($bool=true)
+    {
+        $this->writeSub = $bool;
+
+        return $this;
+    }
+
+    /**
+     * Sets the value of writeAutoSub.
+     *
+     * @param mixed $writeAutoSub the write auto sub
+     *
+     * @return self
+     */
+    public function setWriteAutoSub($bool=true)
+    {
+        $this->writeAutoSub = $bool;
+
+        return $this;
+    }
+
+    /**
+     * Sets the value of allSub.
+     *
+     * @param mixed $allSub the all sub
+     *
+     * @return self
+     */
+    public function setAllSub($bool=true)
+    {
+        $this->allSub = $bool;
+
+        return $this;
+    }
+
+    /**
+     * Sets the value of listSubs.
+     *
+     * @param mixed $listSubs the list subs
+     *
+     * @return self
+     */
+    public function setListSubs($bool=true)
+    {
+        $this->listSubs = $bool;
+
+        return $this;
+    }
+
+    /**
+     * Sets the value of subFormat.
+     *
+     * @param mixed $subFormat the sub format
+     *
+     * @return self
+     */
+    public function setSubFormat($subFormat)
+    {
+        $this->subFormat = $subFormat;
+
+        return $this;
+    }
+
+    /**
+     * Sets the value of subLangs.
+     *
+     * @param mixed $subLangs the sub langs
+     *
+     * @return self
+     */
+    public function setSubLangs($subLangs)
+    {
+        $this->subLangs = $subLangs;
+
+        return $this;
+    }
 }
