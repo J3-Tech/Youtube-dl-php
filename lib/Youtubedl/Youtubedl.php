@@ -9,14 +9,14 @@ class Youtubedl extends Client{
 
 	public function getExtractors($description=false){
 		if($description){
-			return array_filter(explode("\n",parent::run('--extractor-descriptions')));
+			return array_filter(explode("\n",parent::run('extractor-descriptions')));
 		}
 
-		return array_filter(explode("\n", parent::run('--list-extractors')));
+		return array_filter(explode("\n", parent::run('list-extractors')));
 	}
 
 	public function getUserAgent(){
-		return parent::run('--dump-user-agent');
+		return parent::run('dump-user-agent');
 	}
 
 	public function setOutput($output){
@@ -28,7 +28,7 @@ class Youtubedl extends Client{
 	public function download($link){
 		$cmd=null;
 		if($this->output){
-			$cmd="-o{$this->output}/\"%(title)s.%(ext)s\" "; 
+			$cmd="output {$this->output}/\"%(title)s.%(ext)s\" "; 
 		}
 
 		return parent::run($cmd.$link);

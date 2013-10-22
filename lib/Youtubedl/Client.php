@@ -64,7 +64,7 @@ class Client{
 	}
 
 	protected function run($cmd){
-		$process=new Process("youtube-dl {$cmd}");
+		$process=new Process("youtube-dl --{$cmd}");
 		if($this->verbose){
 			$process->run(function($type,$buffer){
 				if (Process::ERR === $type) {
@@ -73,8 +73,9 @@ class Client{
 			        echo 'OUT > '.$buffer;
 			    }
 			});
+		}else{
+			($this->async) ? $process->start():$process->run();
 		}
-		($this->async) ? $process->start():$process->run();
 		if (!$process->isSuccessful()) {
     		throw new \RuntimeException($process->getErrorOutput());
 		}
