@@ -3,6 +3,14 @@
 namespace Youtubedl;
 
 use Symfony\Component\Process\Process;
+use Youtubedl\Option\Download;
+use Youtubedl\Option\Authentication;
+use Youtubedl\Option\Filesystem;
+use Youtubedl\Option\Format;
+use Youtubedl\Option\PostProcessing;
+use Youtubedl\Option\Verbosity;
+use Youtubedl\Option\Video;
+use Youtubedl\Option\General;
 
 class Client{
 
@@ -14,6 +22,15 @@ class Client{
 	private $userAgent 	=null;
 	private $noCheckCertificate=null;
 	private $ignoreErrors=null;
+
+	private $download;
+	private $authentication;
+	private $filesystem;
+	private $format;
+	private $postProcessing;
+	private $subtitle;
+	private $video;
+	private $general;
 
 	public function isAsync($bool=false){
 		$this->async=$bool;
@@ -27,44 +44,33 @@ class Client{
 		return $this;
 	}
 
-	public function setCacheDir($cacheDir){
-		$this->cacheDir="--cache-dir {$cacheDir}";
-
-		return $this;
-	}
-
-	public function setNoCache(){
-		$this->noCache="--no-cache-dir";
-
-		return $this;
-	}
-
-	public function setNoCheckCertificate(){
-		$this->noCheckCertificate="--no-check-certificates";
-	}
-
-	public function setProxy($url){
-		$this->proxy="--proxy {$url}";
-
-		return $this;
-	}
-
-	public function setUserAgent($userAgent){
-		$this->userAgent="--user-agent {$userAgent}";
-
-		return $this;
-	}
-
-	public function setIgnoreErrors($bool=false){
-		if($bool){
-			$this->ignoreErrors="--ignore-errors";
+	public function __call($method,$args){
+		preg_match("/get([A-Za-z]+)Option/",$method,$match);
+		switch (strtolower($match[1])) {
+			case 'authentication':
+				return $this->authentication ? $this->authentication:$this->authentication=new Authentication();
+			case 'download':
+				return $this->download ? $this->downlad:$this->download=new Download();
+			case 'filesystem':
+				return $this->filesystem ? $this->filesystem:$this->filesystem=new Filesystem();
+			case 'postprocessing':
+				return $this->postProcessing ? $this->postProcessing:$this->postProcessing=new PostProcessing();
+			case 'verbosity':
+				return $this->verbosity ? $this->Verbosity:$this->verbosity=new Verbosity();
+			case 'video':
+				return $this->video? $this->video:$this->video=new Video();
+			default:
+				return $this->option ? $this->option:$this->option=new General();
 		}
-
-		return $this;
 	}
 
 	protected function run($cmd){
-		$process=new Process("youtube-dl --{$cmd}");
+		$option= "{$this->general} {$this->authentication} ";
+		$option.="{$this->download} {$this->filesystem} ";
+		$option.="{$this->format} {$this->subtitle} ";
+		$option.="{$this->video} {$this->verbosity} ";
+		$option.="{$this->postProcessing}";
+		$process=new Process("youtube-dl {$option} {$cmd}");
 		if($this->verbose){
 			$process->run(function($type,$buffer){
 				if (Process::ERR === $type) {
