@@ -15,8 +15,8 @@ abstract class Base
                 }
             }
             if ($obj->$key===true) {
-            	$output.="--{$option} ";
-            }elseif($obj->$key){
+                $output.="--{$option} ";
+            } elseif ($obj->$key) {
                 $output.="--{$option} {$obj->$key} ";
             }
         }

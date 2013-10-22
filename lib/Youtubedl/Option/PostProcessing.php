@@ -41,9 +41,9 @@ class PostProcessing extends Base
      */
     public function setAudioFormat($audioFormat)
     {
-    	if(in_array($audioFormat,array('best','aac','vorbis','mp3','m4a','opus','wav'))){
-        	$this->audioFormat = $audioFormat;
-    	}
+        if (in_array($audioFormat,array('best','aac','vorbis','mp3','m4a','opus','wav'))) {
+            $this->audioFormat = $audioFormat;
+        }
 
         return $this;
     }
@@ -57,9 +57,9 @@ class PostProcessing extends Base
      */
     public function setAudioQuality($audioQuality)
     {
-    	if($audioQuality>=0||$audioQuality<=9){
-        	$this->audioQuality = $audioQuality;
-    	}
+        if ($audioQuality>=0||$audioQuality<=9) {
+            $this->audioQuality = $audioQuality;
+        }
 
         return $this;
     }
@@ -73,9 +73,9 @@ class PostProcessing extends Base
      */
     public function setRecodeVideo($format)
     {
-    	if(in_array($format,array('mp4','flv','ogg','webm'))){
-        	$this->recodeVideo = $format;
-    	}
+        if (in_array($format,array('mp4','flv','ogg','webm'))) {
+            $this->recodeVideo = $format;
+        }
 
         return $this;
     }
