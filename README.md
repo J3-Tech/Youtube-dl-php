@@ -16,8 +16,9 @@ Installation using [Composer](https://getcomposer.org):
 }
 ```
 
-
 ##Examples
+
+###Download
 ```php
 use Youtubedl\Youtubedl;
 
@@ -25,4 +26,26 @@ $youtubedl=new Youtubedl();
 $youtubedl->getFilesystemOption()
           ->setOutput("\"/tmp/%(title)s.%(ext)s\"");
 $youtubedl->download('BaW_jenozKc');
+```
+
+###Extractor List
+
+```php
+use Youtubedl\Youtubedl;
+
+$youtubedl=new Youtubedl();
+$youtubedl->getOption()
+          ->getExtractors();
+var_dump($youtubedl->execute());
+```
+
+###Extractor Descriptions
+
+```php
+use Youtubedl\Youtubedl;
+
+$youtubedl=new Youtubedl();
+$youtubedl->getOption()
+          ->getExtractorDescriptions();
+var_dump($youtubedl->execute());
 ```

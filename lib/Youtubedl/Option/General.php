@@ -113,9 +113,9 @@ class General extends Base
      *
      * @return self
      */
-    public function setListExtractors($bool=true)
+    public function getExtractors()
     {
-        $this->listExtractors = $bool;
+        $this->listExtractors = true;
 
         return $this;
     }
@@ -127,9 +127,9 @@ class General extends Base
      *
      * @return self
      */
-    public function setExtractorDescriptions($bool=true)
+    public function getExtractorDescriptions()
     {
-        $this->extractorDescriptions = $bool;
+        $this->extractorDescriptions = true;
 
         return $this;
     }
