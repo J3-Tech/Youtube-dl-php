@@ -71,9 +71,9 @@ class General extends Base
      *
      * @return self
      */
-    public function setDumpUserAgent($bool=true)
+    public function getUserAgent()
     {
-        $this->dumpUserAgent = $bool;
+        $this->dumpUserAgent = true;
 
         return $this;
     }

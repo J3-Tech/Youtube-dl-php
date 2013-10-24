@@ -42,13 +42,6 @@ class Youtubedl
         return $this;
     }
 
-    public function setOutput($output)
-    {
-        $this->output=$output;
-
-        return $this;
-    }
-
     public function __call($method,$args)
     {
         if(preg_match("/get([A-Za-z]+)?Option/",$method,$match)){
@@ -76,7 +69,7 @@ class Youtubedl
 
     public function download($link)
     {
-        return execute($link);
+        return $this->execute($link);
     }
 
     public function execute($cmd=null)
@@ -103,7 +96,13 @@ class Youtubedl
             throw new YoutubedlException($process->getErrorOutput());
         }
 
-        return explode("\n",trim($process->getOutput()));
+        if($result=explode("\n",trim($process->getOutput()))){
+            if(count($result)>1){
+                return $result;
+            }
+            
+            return $result[0];
+        }
     }
 
 }
