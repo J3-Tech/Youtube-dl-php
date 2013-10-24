@@ -87,7 +87,7 @@ class General extends Base
      */
     public function setUserAgent($userAgent)
     {
-        $this->userAgent = $userAgent;
+        $this->userAgent = "\"{$userAgent}\"";
 
         return $this;
     }

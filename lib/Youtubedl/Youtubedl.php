@@ -69,6 +69,10 @@ class Youtubedl
 
     public function download($link)
     {
+        if(is_array($link)){
+            $link=implode(' ', $link);
+        }
+        
         return $this->execute($link);
     }
 

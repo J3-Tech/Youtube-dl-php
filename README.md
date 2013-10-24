@@ -28,6 +28,16 @@ $youtubedl->getFilesystemOption()
 $youtubedl->download('BaW_jenozKc');
 ```
 
+###Multiple Download
+```php
+use Youtubedl\Youtubedl;
+
+$youtubedl=new Youtubedl();
+$youtubedl->getFilesystemOption()
+          ->setOutput("\"/tmp/%(title)s.%(ext)s\"");
+$youtubedl->download(array('BaW_jenozKc','dOibtqWo6z4'));
+```
+
 ###Extractor List
 
 ```php
