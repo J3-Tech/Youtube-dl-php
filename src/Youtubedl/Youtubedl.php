@@ -24,8 +24,8 @@ class Youtubedl
     private $subtitle;
     private $verbosity;
     private $video;
-    private $async    =false;
-    private $verbose  =false;
+    private $async = false;
+    private $verbose = false;
     private $option;
 
     public function isAsync($bool=false)
