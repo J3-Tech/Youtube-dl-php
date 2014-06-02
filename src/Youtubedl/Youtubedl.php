@@ -44,8 +44,8 @@ class Youtubedl
 
     public function __call($method,$args)
     {
-        if(preg_match("/get([A-Za-z]+)?Option/",$method,$match)){
-            if(isset($match[1])){
+        if (preg_match("/get([A-Za-z]+)?Option/",$method,$match)) {
+            if (isset($match[1])) {
                 switch (strtolower($match[1])) {
                     case 'authentication':
                         return $this->authentication ? $this->authentication:$this->authentication=new Authentication();
@@ -60,19 +60,19 @@ class Youtubedl
                     case 'video':
                         return $this->video? $this->video:$this->video=new Video();
                 }
-            }else{
+            } else {
                 return $this->option ? $this->option:$this->option=new General();
             }
         }
-        
+
     }
 
     public function download($link)
     {
-        if(is_array($link)){
+        if (is_array($link)) {
             $link=implode(' ', $link);
         }
-        
+
         return $this->execute($link);
     }
 
@@ -86,7 +86,7 @@ class Youtubedl
         $option.="{$this->option}";
         $process=new Process("youtube-dl {$option} {$cmd}");
         if ($this->verbose) {
-            $process->run(function($type,$buffer){
+            $process->run(function ($type,$buffer) {
                 if (Process::ERR === $type) {
                     echo 'ERR > '.$buffer;
                 } else {
@@ -100,11 +100,11 @@ class Youtubedl
             throw new YoutubedlException($process->getErrorOutput());
         }
 
-        if($result=explode("\n",trim($process->getOutput()))){
-            if(count($result)>1){
+        if ($result=explode("\n",trim($process->getOutput()))) {
+            if (count($result)>1) {
                 return $result;
             }
-            
+
             return $result[0];
         }
     }
