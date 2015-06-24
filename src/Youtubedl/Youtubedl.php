@@ -4,9 +4,6 @@ namespace Youtubedl;
 
 use Symfony\Component\Process\Process;
 use Youtubedl\Exceptions\YoutubedlException;
-use Youtubedl\Option\AbstractOption;
-use Youtubedl\Option\Generic;
-use Youtubedl\Factory\OptionCreator;
 
 class Youtubedl
 {
@@ -16,7 +13,7 @@ class Youtubedl
 
     public function __construct()
     {
-        $this->option=new Option();
+        $this->option = new Option();
     }
 
     public function isAsync($bool = false)
