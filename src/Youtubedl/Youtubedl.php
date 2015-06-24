@@ -3,15 +3,10 @@
 namespace Youtubedl;
 
 use Symfony\Component\Process\Process;
-use Youtubedl\Option\Download;
-use Youtubedl\Option\Authentication;
-use Youtubedl\Option\Filesystem;
-use Youtubedl\Option\Format;
-use Youtubedl\Option\PostProcessing;
-use Youtubedl\Option\Verbosity;
-use Youtubedl\Option\Video;
-use Youtubedl\Option\Generic;
 use Youtubedl\Exceptions\YoutubedlException;
+use Youtubedl\Option\AbstractOption;
+use Youtubedl\Option\Generic;
+use Youtubedl\Factory\OptionCreator;
 
 class Youtubedl
 {
@@ -28,64 +23,69 @@ class Youtubedl
     private $verbose = false;
     private $option;
 
-    public function isAsync($bool=false)
+    public function isAsync($bool = false)
     {
-        $this->async=$bool;
+        $this->async = $bool;
 
         return $this;
     }
 
-    public function isVerbose($bool=false)
+    public function isVerbose($bool = false)
     {
-        $this->verbose=$bool;
+        $this->verbose = $bool;
 
         return $this;
     }
 
-    public function __call($method,$args)
+    public function __call($method, $args)
     {
-        if (preg_match("/get([A-Za-z]+)?Option/",$method,$match)) {
+        if (preg_match('/get([A-Za-z]+)?Option/', $method, $match)) {
+            $option = 'Generic';
+            $property = 'option';
             if (isset($match[1])) {
-                switch (strtolower($match[1])) {
-                    case 'authentication':
-                        return $this->authentication ? $this->authentication:$this->authentication=new Authentication();
-                    case 'download':
-                        return $this->download ? $this->download:$this->download=new Download();
-                    case 'filesystem':
-                        return $this->filesystem ? $this->filesystem:$this->filesystem=new Filesystem();
-                    case 'postprocessing':
-                        return $this->postProcessing ? $this->postProcessing:$this->postProcessing=new PostProcessing();
-                    case 'verbosity':
-                        return $this->verbosity ? $this->verbosity:$this->verbosity=new Verbosity();
-                    case 'video':
-                        return $this->video? $this->video:$this->video=new Video();
+                $option = $match[1];
+                $property = lcfirst($option);
+            }
+            if (property_exists($this, $property)) {
+                if ($this->$property instanceof AbstractOption) {
+                    return $this->$property;
                 }
-            } else {
-                return $this->option ? $this->option:$this->option=new Generic();
+
+                $this->$property = OptionCreator::getInstance()->create($option);
+
+                return $this->__call($method, $args);
             }
         }
+
+        throw new YoutubedlException("Invalid method invoked - {$method}");
     }
 
     public function download($link)
     {
         if (is_array($link)) {
-            $link=implode(' ', $link);
+            $link = implode(' ', $link);
         }
 
         return $this->execute($link);
     }
 
-    public function execute($cmd=null)
+    public function getOptions()
     {
-        $option ="{$this->general} {$this->authentication} ";
-        $option.="{$this->download} {$this->filesystem} ";
-        $option.="{$this->format} {$this->subtitle} ";
-        $option.="{$this->video} {$this->verbosity} ";
-        $option.="{$this->postProcessing}";
-        $option.="{$this->option}";
-        $process=new Process(Config::getBinFile()." {$option} {$cmd}");
+        $options = null;
+        foreach (get_object_vars($this) as $property => $value) {
+            if ($value instanceof AbstractOption) {
+                $options .= "{$value} ";
+            }
+        }
+
+        return $options;
+    }
+
+    public function execute($cmd = null)
+    {
+        $process = new Process(Config::getBinFile()." {$this->getOptions()} {$cmd}");
         if ($this->verbose) {
-            $process->run(function ($type,$buffer) {
+            $process->run(function ($type, $buffer) {
                 if (Process::ERR === $type) {
                     echo 'ERR > '.$buffer;
                 } else {
@@ -93,13 +93,13 @@ class Youtubedl
                 }
             });
         } else {
-            ($this->async) ? $process->start():$process->run();
+            ($this->async) ? $process->start() : $process->run();
         }
         if (!$process->isSuccessful()) {
             throw new YoutubedlException($process->getErrorOutput());
         }
 
-        if ($result=explode("\n",trim($process->getOutput()))) {
+        if ($result = explode("\n", trim($process->getOutput()))) {
             if (count($result)>1) {
                 return $result;
             }
