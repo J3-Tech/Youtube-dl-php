@@ -2,17 +2,12 @@
 
 namespace Youtubedl\Option;
 
-class Download extends Base
+class Download extends AbstractOption
 {
     protected $bufferSize;
     protected $noResizeBuffer;
     protected $rateLimit;
     protected $retries;
-
-    public function __toString()
-    {
-        return parent::format($this);
-    }
 
     /**
      * Sets the value of rateLimit.

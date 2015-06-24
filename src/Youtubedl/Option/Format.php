@@ -2,18 +2,13 @@
 
 namespace Youtubedl\Option;
 
-class Format extends Base
+class Format extends AbstractOption
 {
     protected $allFormat;
     protected $format;
     protected $listFormats;
     protected $maxQuality;
     protected $preferFreeFormats;
-
-    public function __toString()
-    {
-        return parent::format($this);
-    }
 
     /**
      * Sets the value of format.

@@ -2,7 +2,7 @@
 
 namespace Youtubedl\Option;
 
-class Verbosity extends Base
+class Verbosity extends AbstractOption
 {
     protected $consoleTitle;
     protected $dumpIntermediatePages;
@@ -18,11 +18,6 @@ class Verbosity extends Base
     protected $simulate;
     protected $skipDownload;
     protected $verbose;
-
-    public function __toString()
-    {
-        return parent::format($this);
-    }
 
     /**
      * Sets the value of quiet.

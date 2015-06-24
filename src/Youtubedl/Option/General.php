@@ -2,7 +2,7 @@
 
 namespace Youtubedl\Option;
 
-class General extends Base
+class General extends AbstractOption
 {
     protected $abortOnError;
     protected $cacheDir;
@@ -16,11 +16,6 @@ class General extends Base
     protected $proxy;
     protected $referer;
     protected $userAgent;
-
-    public function __toString()
-    {
-        return parent::format($this);
-    }
 
     /**
      * Sets the value of help.

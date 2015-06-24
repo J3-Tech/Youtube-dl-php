@@ -2,7 +2,7 @@
 
 namespace Youtubedl\Option;
 
-class Video extends Base
+class Video extends AbstractOption
 {
     protected $ageLimit;
     protected $date;
@@ -17,11 +17,6 @@ class Video extends Base
     protected $playlistEnd;
     protected $playlistStart;
     protected $rejectTitle;
-
-    public function __toString()
-    {
-        return parent::format($this);
-    }
 
     /**
      * Sets the value of playlistStart.

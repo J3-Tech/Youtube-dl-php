@@ -2,16 +2,11 @@
 
 namespace Youtubedl\Option;
 
-class Authentication extends Base
+class Authentication extends AbstractOption
 {
     protected $password;
     protected $username;
     protected $videoPassword;
-
-    public function __toString()
-    {
-        return parent::format($this);
-    }
 
     /**
      * Sets the value of username.

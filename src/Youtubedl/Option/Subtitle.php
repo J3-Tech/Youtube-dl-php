@@ -2,7 +2,7 @@
 
 namespace Youtubedl\Option;
 
-class Subtitle extends Base
+class Subtitle extends AbstractOption
 {
     protected $allSub;
     protected $listSubs;
@@ -10,11 +10,6 @@ class Subtitle extends Base
     protected $subLangs;
     protected $writeAutoSub;
     protected $writeSub;
-
-    public function __toString()
-    {
-        return parent::format($this);
-    }
 
     /**
      * Sets the value of writeSub.

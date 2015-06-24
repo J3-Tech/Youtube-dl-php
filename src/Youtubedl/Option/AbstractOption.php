@@ -2,25 +2,30 @@
 
 namespace Youtubedl\Option;
 
-abstract class Base
+abstract class AbstractOption
 {
-    public function format($obj)
+    public function format()
     {
         $output='';
-        foreach (get_object_vars($obj) as $key=>$var) {
+        foreach (get_object_vars($this) as $key=>$var) {
             $option=$key;
             if (preg_match_all("/[A-Z]/",$key,$upper)) {
                 foreach ($upper[0] as $value) {
                     $option=str_replace($value,'-'.strtolower($value),$option);
                 }
             }
-            if ($obj->$key===true) {
+            if ($this->$key===true) {
                 $output.="--{$option} ";
-            } elseif ($obj->$key) {
-                $output.="--{$option} {$obj->$key} ";
+            } elseif ($this->$key) {
+                $output.="--{$option} {$this->$key} ";
             }
         }
 
         return $output;
+    }
+
+    public function __toString()
+    {
+        return $this->format();
     }
 }

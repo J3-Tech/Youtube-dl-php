@@ -2,7 +2,7 @@
 
 namespace Youtubedl\Option;
 
-class PostProcessing extends Base
+class PostProcessing extends AbstractOption
 {
     protected $addMetadata;
     protected $audioFormat;
@@ -12,11 +12,6 @@ class PostProcessing extends Base
     protected $keepVideo;
     protected $noPostOverwrites;
     protected $recodeVideo;
-
-    public function __toString()
-    {
-        return parent::format($this);
-    }
 
     /**
      * Sets the value of extractAudio.

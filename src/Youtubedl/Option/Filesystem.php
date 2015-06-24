@@ -2,7 +2,7 @@
 
 namespace Youtubedl\Option;
 
-class Filesystem extends Base
+class Filesystem extends AbstractOption
 {
     protected $autoNumber;
     protected $autoNumberSize;
@@ -21,11 +21,6 @@ class Filesystem extends Base
     protected $writeDescription;
     protected $writeInfoJson;
     protected $writeThumnail;
-
-    public function __toString()
-    {
-        return parent::format($this);
-    }
 
     /**
      * Sets the value of title.
