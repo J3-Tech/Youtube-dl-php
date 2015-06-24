@@ -9,6 +9,7 @@ class Format extends AbstractOption
     protected $listFormats;
     protected $maxQuality;
     protected $preferFreeFormats;
+    protected $youtubeSkipDashManifest;
 
     /**
      * Sets the value of format.
@@ -76,6 +77,13 @@ class Format extends AbstractOption
     public function setListFormats($bool = true)
     {
         $this->listFormats = $bool;
+
+        return $this;
+    }
+
+    public function setYoutubeSkipDashManifest($bool = true)
+    {
+        $this->youtubeSkipDashManifest = $bool;
 
         return $this;
     }
