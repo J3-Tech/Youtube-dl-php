@@ -2,7 +2,7 @@
 
 namespace Youtubedl\Option;
 
-class General extends AbstractOption
+class Generic extends AbstractOption
 {
     protected $abortOnError;
     protected $cacheDir;

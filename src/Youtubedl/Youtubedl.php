@@ -10,7 +10,7 @@ use Youtubedl\Option\Format;
 use Youtubedl\Option\PostProcessing;
 use Youtubedl\Option\Verbosity;
 use Youtubedl\Option\Video;
-use Youtubedl\Option\General;
+use Youtubedl\Option\Generic;
 use Youtubedl\Exceptions\YoutubedlException;
 
 class Youtubedl
@@ -61,7 +61,7 @@ class Youtubedl
                         return $this->video? $this->video:$this->video=new Video();
                 }
             } else {
-                return $this->option ? $this->option:$this->option=new General();
+                return $this->option ? $this->option:$this->option=new Generic();
             }
         }
     }
