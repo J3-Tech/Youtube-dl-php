@@ -14,14 +14,13 @@ class Youtubedl
     private $download;
     private $filesystem;
     private $format;
-    private $general;
+    private $generic;
     private $postProcessing;
     private $subtitle;
     private $verbosity;
     private $video;
     private $async = false;
     private $verbose = false;
-    private $option;
 
     public function isAsync($bool = false)
     {
@@ -41,11 +40,10 @@ class Youtubedl
     {
         if (preg_match('/get([A-Za-z]+)?Option/', $method, $match)) {
             $option = 'Generic';
-            $property = 'option';
             if (isset($match[1])) {
                 $option = $match[1];
-                $property = lcfirst($option);
             }
+            $property = lcfirst($option);
             if (property_exists($this, $property)) {
                 if ($this->$property instanceof AbstractOption) {
                     return $this->$property;
