@@ -13,7 +13,7 @@ class Verbosity extends AbstractOption
     protected $getTitle;
     protected $getUrl;
     protected $newline;
-    protected $noprogress;
+    protected $noProgress;
     protected $quiet;
     protected $simulate;
     protected $skipDownload;
@@ -166,9 +166,9 @@ class Verbosity extends AbstractOption
      *
      * @return self
      */
-    public function setNoprogress($bool = true)
+    public function setNoProgress($bool = true)
     {
-        $this->noprogress = $bool;
+        $this->noProgress = $bool;
 
         return $this;
     }
