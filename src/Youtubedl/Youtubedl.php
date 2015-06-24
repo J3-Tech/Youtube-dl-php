@@ -10,17 +10,14 @@ use Youtubedl\Factory\OptionCreator;
 
 class Youtubedl
 {
-    private $authentication;
-    private $download;
-    private $filesystem;
-    private $format;
-    private $generic;
-    private $postProcessing;
-    private $subtitle;
-    private $verbosity;
-    private $video;
     private $async = false;
     private $verbose = false;
+    private $option;
+
+    public function __construct()
+    {
+        $this->option=new Option();
+    }
 
     public function isAsync($bool = false)
     {
@@ -36,26 +33,9 @@ class Youtubedl
         return $this;
     }
 
-    public function __call($method, $args)
+    public function getOption()
     {
-        if (preg_match('/get([A-Za-z]+)?Option/', $method, $match)) {
-            $option = 'Generic';
-            if (isset($match[1])) {
-                $option = $match[1];
-            }
-            $property = lcfirst($option);
-            if (property_exists($this, $property)) {
-                if ($this->$property instanceof AbstractOption) {
-                    return $this->$property;
-                }
-
-                $this->$property = OptionCreator::getInstance()->create($option);
-
-                return $this->__call($method, $args);
-            }
-        }
-
-        throw new YoutubedlException("Invalid method invoked - {$method}");
+        return $this->option;
     }
 
     public function download($link)
@@ -67,21 +47,9 @@ class Youtubedl
         return $this->execute($link);
     }
 
-    public function getOptions()
-    {
-        $options = null;
-        foreach (get_object_vars($this) as $property => $value) {
-            if ($value instanceof AbstractOption) {
-                $options .= "{$value} ";
-            }
-        }
-
-        return $options;
-    }
-
     public function execute($cmd = null)
     {
-        $process = new Process(Config::getBinFile()." {$this->getOptions()} {$cmd}");
+        $process = new Process(Config::getBinFile()." {$this->option} {$cmd}");
         if ($this->verbose) {
             $process->run(function ($type, $buffer) {
                 if (Process::ERR === $type) {
