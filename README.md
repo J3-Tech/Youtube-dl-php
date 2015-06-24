@@ -23,7 +23,7 @@ Installation using [Composer](https://getcomposer.org):
 use Youtubedl\Youtubedl;
 
 $youtubedl=new Youtubedl();
-$youtubedl->getFilesystemOption()
+$youtubedl->getOption()
           ->setOutput("\"/tmp/%(title)s.%(ext)s\"");
 $youtubedl->download('BaW_jenozKc');
 ```
@@ -33,7 +33,7 @@ $youtubedl->download('BaW_jenozKc');
 use Youtubedl\Youtubedl;
 
 $youtubedl=new Youtubedl();
-$youtubedl->getFilesystemOption()
+$youtubedl->getOption()
           ->setOutput("\"/tmp/%(title)s.%(ext)s\"");
 $youtubedl->download(array('BaW_jenozKc','dOibtqWo6z4'));
 ```
@@ -67,7 +67,7 @@ use Youtubedl\Youtubedl;
 
 $youtubedl=new Youtubedl();
 $youtubedl->getOption()
-		  ->setUserAgent('Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14')	
+		  ->setUserAgent('Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14')
           ->getUserAgent();
 var_dump($youtubedl->execute());
 ```
