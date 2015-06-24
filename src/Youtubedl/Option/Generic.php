@@ -24,7 +24,7 @@ class Generic extends AbstractOption
      *
      * @return self
      */
-    public function setHelp($bool=true)
+    public function setHelp($bool = true)
     {
         $this->help = $bool;
 
@@ -38,7 +38,7 @@ class Generic extends AbstractOption
      *
      * @return self
      */
-    public function setIgnoreErrors($bool=true)
+    public function setIgnoreErrors($bool = true)
     {
         $this->ignoreErrors = $bool;
 
@@ -52,7 +52,7 @@ class Generic extends AbstractOption
      *
      * @return self
      */
-    public function setAbortOnError($bool=true)
+    public function setAbortOnError($bool = true)
     {
         $this->abortOnError = $bool;
 
@@ -150,7 +150,7 @@ class Generic extends AbstractOption
      *
      * @return self
      */
-    public function setNoCheckCertificate($bool=true)
+    public function setNoCheckCertificate($bool = true)
     {
         $this->noCheckCertificate = $bool;
 
@@ -178,7 +178,7 @@ class Generic extends AbstractOption
      *
      * @return self
      */
-    public function setNoCacheDir($bool=true)
+    public function setNoCacheDir($bool = true)
     {
         $this->noCacheDir = $bool;
 

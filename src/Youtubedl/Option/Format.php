@@ -31,7 +31,7 @@ class Format extends AbstractOption
      *
      * @return self
      */
-    public function setAllFormat($bool=true)
+    public function setAllFormat($bool = true)
     {
         $this->allFormat = $bool;
 
@@ -45,7 +45,7 @@ class Format extends AbstractOption
      *
      * @return self
      */
-    public function setPreferFreeFormats($bool=true)
+    public function setPreferFreeFormats($bool = true)
     {
         $this->preferFreeFormats = $bool;
 
@@ -73,7 +73,7 @@ class Format extends AbstractOption
      *
      * @return self
      */
-    public function setListFormats($bool=true)
+    public function setListFormats($bool = true)
     {
         $this->listFormats = $bool;
 

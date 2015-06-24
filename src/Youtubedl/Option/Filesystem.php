@@ -29,7 +29,7 @@ class Filesystem extends AbstractOption
      *
      * @return self
      */
-    public function setTitle($bool=true)
+    public function setTitle($bool = true)
     {
         $this->title = $bool;
 
@@ -43,7 +43,7 @@ class Filesystem extends AbstractOption
      *
      * @return self
      */
-    public function setId($bool=true)
+    public function setId($bool = true)
     {
         $this->id = $bool;
 
@@ -57,7 +57,7 @@ class Filesystem extends AbstractOption
      *
      * @return self
      */
-    public function setAutoNumber($bool=true)
+    public function setAutoNumber($bool = true)
     {
         $this->autoNumber = $bool;
 
@@ -127,7 +127,7 @@ class Filesystem extends AbstractOption
      *
      * @return self
      */
-    public function setNoOverwrites($bool=true)
+    public function setNoOverwrites($bool = true)
     {
         $this->noOverwrites = $bool;
 
@@ -141,7 +141,7 @@ class Filesystem extends AbstractOption
      *
      * @return self
      */
-    public function setContinue($bool=true)
+    public function setContinue($bool = true)
     {
         $this->continue = $bool;
 
@@ -155,7 +155,7 @@ class Filesystem extends AbstractOption
      *
      * @return self
      */
-    public function setNoContinue($bool=true)
+    public function setNoContinue($bool = true)
     {
         $this->noContinue = $bool;
 
@@ -183,7 +183,7 @@ class Filesystem extends AbstractOption
      *
      * @return self
      */
-    public function setNoPart($bool=true)
+    public function setNoPart($bool = true)
     {
         $this->noPart = $bool;
 
@@ -197,7 +197,7 @@ class Filesystem extends AbstractOption
      *
      * @return self
      */
-    public function setNoMtime($bool=true)
+    public function setNoMtime($bool = true)
     {
         $this->noMtime = $bool;
 
@@ -211,7 +211,7 @@ class Filesystem extends AbstractOption
      *
      * @return self
      */
-    public function setWriteDescription($bool=true)
+    public function setWriteDescription($bool = true)
     {
         $this->writeDescription = $bool;
 
@@ -225,7 +225,7 @@ class Filesystem extends AbstractOption
      *
      * @return self
      */
-    public function setWriteInfoJson($bool=true)
+    public function setWriteInfoJson($bool = true)
     {
         $this->writeInfoJson = $bool;
 
@@ -239,7 +239,7 @@ class Filesystem extends AbstractOption
      *
      * @return self
      */
-    public function setWriteAnnotations($bool=true)
+    public function setWriteAnnotations($bool = true)
     {
         $this->writeAnnotations = $bool;
 
@@ -253,7 +253,7 @@ class Filesystem extends AbstractOption
      *
      * @return self
      */
-    public function setWriteThumnail($bool=true)
+    public function setWriteThumnail($bool = true)
     {
         $this->writeThumnail = $bool;
 

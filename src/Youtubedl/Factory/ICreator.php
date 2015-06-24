@@ -4,5 +4,5 @@ namespace Youtubedl\Factory;
 
 interface ICreator
 {
-	public function create($name);
+    public function create($name);
 }

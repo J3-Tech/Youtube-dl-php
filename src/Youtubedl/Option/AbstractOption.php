@@ -6,18 +6,18 @@ abstract class AbstractOption
 {
     public function format()
     {
-        $output='';
-        foreach (get_object_vars($this) as $key=>$var) {
-            $option=$key;
-            if (preg_match_all("/[A-Z]/",$key,$upper)) {
+        $output = null;
+        foreach (get_object_vars($this) as $key => $var) {
+            $option = $key;
+            if (preg_match_all('/[A-Z]/', $key, $upper)) {
                 foreach ($upper[0] as $value) {
-                    $option=str_replace($value,'-'.strtolower($value),$option);
+                    $option = str_replace($value, '-'.strtolower($value), $option);
                 }
             }
-            if ($this->$key===true) {
-                $output.="--{$option} ";
+            if ($this->$key === true) {
+                $output .= "--{$option}";
             } elseif ($this->$key) {
-                $output.="--{$option} {$this->$key} ";
+                $output .= "--{$option} {$this->$key}";
             }
         }
 

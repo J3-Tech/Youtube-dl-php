@@ -165,7 +165,7 @@ class Video extends AbstractOption
      *
      * @return self
      */
-    public function setNoPlaylist($bool=true)
+    public function setNoPlaylist($bool = true)
     {
         $this->noPlaylist = $bool;
 

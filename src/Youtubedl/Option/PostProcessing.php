@@ -20,7 +20,7 @@ class PostProcessing extends AbstractOption
      *
      * @return self
      */
-    public function setExtractAudio($bool=true)
+    public function setExtractAudio($bool = true)
     {
         $this->extractAudio = $bool;
 
@@ -36,7 +36,7 @@ class PostProcessing extends AbstractOption
      */
     public function setAudioFormat($audioFormat)
     {
-        if (in_array($audioFormat,array('best','aac','vorbis','mp3','m4a','opus','wav'))) {
+        if (in_array($audioFormat, array('best', 'aac', 'vorbis', 'mp3', 'm4a', 'opus', 'wav'))) {
             $this->audioFormat = $audioFormat;
         }
 
@@ -52,7 +52,7 @@ class PostProcessing extends AbstractOption
      */
     public function setAudioQuality($audioQuality)
     {
-        if ($audioQuality>=0||$audioQuality<=9) {
+        if ($audioQuality >= 0 || $audioQuality <= 9) {
             $this->audioQuality = $audioQuality;
         }
 
@@ -68,7 +68,7 @@ class PostProcessing extends AbstractOption
      */
     public function setRecodeVideo($format)
     {
-        if (in_array($format,array('mp4','flv','ogg','webm'))) {
+        if (in_array($format, array('mp4', 'flv', 'ogg', 'webm'))) {
             $this->recodeVideo = $format;
         }
 
@@ -82,7 +82,7 @@ class PostProcessing extends AbstractOption
      *
      * @return self
      */
-    public function setKeepVideo($bool=true)
+    public function setKeepVideo($bool = true)
     {
         $this->keepVideo = $bool;
 
@@ -96,7 +96,7 @@ class PostProcessing extends AbstractOption
      *
      * @return self
      */
-    public function setNoPostOverwrites($bool=true)
+    public function setNoPostOverwrites($bool = true)
     {
         $this->noPostOverwrites = $bool;
 
@@ -110,7 +110,7 @@ class PostProcessing extends AbstractOption
      *
      * @return self
      */
-    public function setEmbedSubs($bool=true)
+    public function setEmbedSubs($bool = true)
     {
         $this->embedSubs = $bool;
 
@@ -124,7 +124,7 @@ class PostProcessing extends AbstractOption
      *
      * @return self
      */
-    public function setAddMetadata($bool=true)
+    public function setAddMetadata($bool = true)
     {
         $this->addMetadata = $bool;
 

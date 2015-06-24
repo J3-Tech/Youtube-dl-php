@@ -58,7 +58,7 @@ class Download extends AbstractOption
      *
      * @return self
      */
-    public function setNoResizeBuffer($bool=true)
+    public function setNoResizeBuffer($bool = true)
     {
         $this->noResizeBuffer = $bool;
 

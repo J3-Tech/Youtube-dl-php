@@ -26,7 +26,7 @@ class Verbosity extends AbstractOption
      *
      * @return self
      */
-    public function setQuiet($bool=true)
+    public function setQuiet($bool = true)
     {
         $this->quiet = $bool;
 
@@ -40,7 +40,7 @@ class Verbosity extends AbstractOption
      *
      * @return self
      */
-    public function setSimulate($bool=true)
+    public function setSimulate($bool = true)
     {
         $this->simulate = $bool;
 
@@ -54,7 +54,7 @@ class Verbosity extends AbstractOption
      *
      * @return self
      */
-    public function setSkipDownload($bool=true)
+    public function setSkipDownload($bool = true)
     {
         $this->skipDownload = $bool;
 
@@ -68,7 +68,7 @@ class Verbosity extends AbstractOption
      *
      * @return self
      */
-    public function getUrl($bool=true)
+    public function getUrl($bool = true)
     {
         $this->getUrl = $bool;
 
@@ -82,7 +82,7 @@ class Verbosity extends AbstractOption
      *
      * @return self
      */
-    public function getTitle($bool=true)
+    public function getTitle($bool = true)
     {
         $this->getTitle = $bool;
 
@@ -96,7 +96,7 @@ class Verbosity extends AbstractOption
      *
      * @return self
      */
-    public function getId($bool=true)
+    public function getId($bool = true)
     {
         $this->getId = $bool;
 
@@ -110,7 +110,7 @@ class Verbosity extends AbstractOption
      *
      * @return self
      */
-    public function getThumbnail($bool=true)
+    public function getThumbnail($bool = true)
     {
         $this->getThumbnail = $bool;
 
@@ -124,7 +124,7 @@ class Verbosity extends AbstractOption
      *
      * @return self
      */
-    public function getFilename($bool=true)
+    public function getFilename($bool = true)
     {
         $this->getFilename = $bool;
 
@@ -138,7 +138,7 @@ class Verbosity extends AbstractOption
      *
      * @return self
      */
-    public function getFormat($bool=true)
+    public function getFormat($bool = true)
     {
         $this->getFormat = $bool;
 
@@ -152,7 +152,7 @@ class Verbosity extends AbstractOption
      *
      * @return self
      */
-    public function setNewline($bool=true)
+    public function setNewline($bool = true)
     {
         $this->newline = $bool;
 
@@ -166,7 +166,7 @@ class Verbosity extends AbstractOption
      *
      * @return self
      */
-    public function setNoprogress($bool=true)
+    public function setNoprogress($bool = true)
     {
         $this->noprogress = $bool;
 
@@ -180,7 +180,7 @@ class Verbosity extends AbstractOption
      *
      * @return self
      */
-    public function setConsoleTitle($bool=true)
+    public function setConsoleTitle($bool = true)
     {
         $this->consoleTitle = $bool;
 
@@ -194,7 +194,7 @@ class Verbosity extends AbstractOption
      *
      * @return self
      */
-    public function setVerbose($bool=true)
+    public function setVerbose($bool = true)
     {
         $this->verbose = $bool;
 
@@ -208,7 +208,7 @@ class Verbosity extends AbstractOption
      *
      * @return self
      */
-    public function setDumpIntermediatePages($bool=true)
+    public function setDumpIntermediatePages($bool = true)
     {
         $this->dumpIntermediatePages = $bool;
 

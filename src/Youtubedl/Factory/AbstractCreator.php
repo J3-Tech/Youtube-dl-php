@@ -4,7 +4,11 @@ namespace Youtubedl\Factory;
 
 abstract class AbstractCreator implements ICreator
 {
-	protected function __construct(){}
+    protected function __construct()
+    {
+    }
 
-	protected function __clone(){}
+    protected function __clone()
+    {
+    }
 }

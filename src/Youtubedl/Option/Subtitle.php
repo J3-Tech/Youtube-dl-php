@@ -18,7 +18,7 @@ class Subtitle extends AbstractOption
      *
      * @return self
      */
-    public function setWriteSub($bool=true)
+    public function setWriteSub($bool = true)
     {
         $this->writeSub = $bool;
 
@@ -32,7 +32,7 @@ class Subtitle extends AbstractOption
      *
      * @return self
      */
-    public function setWriteAutoSub($bool=true)
+    public function setWriteAutoSub($bool = true)
     {
         $this->writeAutoSub = $bool;
 
@@ -46,7 +46,7 @@ class Subtitle extends AbstractOption
      *
      * @return self
      */
-    public function setAllSub($bool=true)
+    public function setAllSub($bool = true)
     {
         $this->allSub = $bool;
 
@@ -60,7 +60,7 @@ class Subtitle extends AbstractOption
      *
      * @return self
      */
-    public function setListSubs($bool=true)
+    public function setListSubs($bool = true)
     {
         $this->listSubs = $bool;
 
