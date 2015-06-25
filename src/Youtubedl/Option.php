@@ -14,7 +14,7 @@ class Option
                 $cleanMethod = str_replace($upper, '-'.strtolower($upper), $cleanMethod);
             }
         }
-        $this->options[$cleanMethod] = current($args);
+        $this->options[$cleanMethod] = '"'.current($args).'"';
 
         return $this;
     }
