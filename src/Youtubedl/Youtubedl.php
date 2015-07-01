@@ -84,7 +84,7 @@ class Youtubedl
         $option.="{$this->video} {$this->verbosity} ";
         $option.="{$this->postProcessing}";
         $option.="{$this->option}";
-        $process=new Process("youtube-dl {$option} {$cmd}");
+        $process=new Process("youtube-dl {$option} -- {$cmd}");
         if ($this->verbose) {
             $process->run(function ($type,$buffer) {
                 if (Process::ERR === $type) {
