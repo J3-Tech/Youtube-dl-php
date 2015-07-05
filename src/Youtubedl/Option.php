@@ -21,7 +21,7 @@ class Option
 
     public function format()
     {
-        $output = null;
+        $output = '';
         foreach ($this->options as $key => $option) {
             $output .= "--{$key} {$option} ";
         }
