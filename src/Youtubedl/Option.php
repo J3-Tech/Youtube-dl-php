@@ -29,7 +29,12 @@ class Option
         return $this;
     }
 
-    public function format()
+    public function __toString()
+    {
+        return $this->format();
+    }
+
+    private function format()
     {
         $output = '';
         foreach ($this->options as $key => $option) {
@@ -37,10 +42,5 @@ class Option
         }
 
         return $output;
-    }
-
-    public function __toString()
-    {
-        return $this->format();
     }
 }
