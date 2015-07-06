@@ -30,7 +30,7 @@ class Installation
         stream_set_blocking($writeStream, 0);
         $read = new Stream($readStream, $loop);
         $write = new Stream($writeStream, $loop);
-        $read->on('end', function () use ($file) {
+        $read->on('end', function() use ($file) {
             chmod($file, 0777);
             echo "Finished downloading $file\n";
         });

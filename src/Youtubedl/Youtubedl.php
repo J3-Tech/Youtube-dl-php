@@ -48,7 +48,7 @@ class Youtubedl
     {
         $process = new Process(Config::getBinFile()." {$this->option} -- {$cmd}");
         if ($this->verbose) {
-            $process->run(function ($type, $buffer) {
+            $process->run(function($type, $buffer) {
                 if (Process::ERR === $type) {
                     echo 'ERR > '.$buffer;
                 } else {
