@@ -1,5 +1,5 @@
 {
-    "name": "chellem/youtube-downloader",
+    "name": "labzone/youtube-downloader",
     "description": "PHP library to download video",
     "keywords": ["youtube", "download"],
     "type": "library",
