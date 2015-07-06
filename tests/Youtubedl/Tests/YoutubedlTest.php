@@ -73,7 +73,7 @@ class YoutubedlTest extends \PHPUnit_Framework_TestCase
 
     private function download()
     {
-        $this->youtubedl->download('BaW_jenozKc');
+        return $this->youtubedl->download('BaW_jenozKc');
     }
 
     private function getOutput()
