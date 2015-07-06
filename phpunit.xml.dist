@@ -1,0 +1,13 @@
+<phpunit bootstrap="./tests/bootstrap.php" colors="true">
+    <testsuites>
+        <testsuite name="Youtubedl Test Suite">
+            <directory suffix="Test.php">./tests/Youtubedl/</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory suffix=".php">./src/Youtubedl/</directory>
+        </whitelist>
+    </filter>
+</phpunit>
