@@ -49,7 +49,7 @@ use Youtubedl\Youtubedl;
 $youtubedl=new Youtubedl();
 $youtubedl->getOption()
           ->getListExtractors();
-var_dump($youtubedl->execute());
+echo $youtubedl->execute();
 ```
 
 ###Extractor Descriptions
@@ -60,7 +60,7 @@ use Youtubedl\Youtubedl;
 $youtubedl=new Youtubedl();
 $youtubedl->getOption()
           ->getExtractorDescriptions();
-var_dump($youtubedl->execute());
+echo $youtubedl->execute();
 ```
 
 ###User Agent
@@ -72,5 +72,5 @@ $youtubedl=new Youtubedl();
 $youtubedl->getOption()
 		  ->setUserAgent('Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14')
           ->dumpUserAgent();
-var_dump($youtubedl->execute());
+echo $youtubedl->execute();
 ```
