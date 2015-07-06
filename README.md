@@ -1,5 +1,7 @@
 YouTube-dl-php
 ==============
+[![Build Status](https://travis-ci.org/chellem/Youtube-dl-php.svg?branch=dev)](https://travis-ci.org/chellem/Youtube-dl-php)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/chellem/Youtube-dl-php/badges/quality-score.png?b=dev)](https://scrutinizer-ci.com/g/chellem/Youtube-dl-php/?branch=dev)
 This library is a PHP implementation of [Youtube-dl](https://github.com/rg3/youtube-dl) for downloading video from Youtube and other sites.
 
 ## Installation
