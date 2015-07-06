@@ -62,12 +62,6 @@ class Youtubedl
             throw new YoutubedlException($process->getErrorOutput());
         }
 
-        if ($result = explode("\n", trim($process->getOutput()))) {
-            if (count($result)>1) {
-                return $result;
-            }
-
-            return $result[0];
-        }
+        return explode("\n", trim($process->getOutput()));
     }
 }
