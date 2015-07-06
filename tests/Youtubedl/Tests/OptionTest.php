@@ -19,8 +19,17 @@ class OptionTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function shouldBeString()
+    public function shouldEmptyOptionBeString()
     {
+        $this->assertInternalType('string', (string)$this->option);
+    }
+
+    /**
+     * @test
+     */
+    public function shouldOptionBeString()
+    {
+        $this->option->getListExtractors();
         $this->assertInternalType('string', (string)$this->option);
     }
 
