@@ -2,24 +2,23 @@
 
 namespace Youtubedl;
 
-use Composer\Script\Event;
 use React\EventLoop\Factory;
 use React\Stream\Stream;
 use Symfony\Component\Process\Process;
 
 class Installation
 {
-    public static function postUpdate(Event $event)
+    public static function postUpdate()
     {
         if (file_exists(Config::getBinFile())) {
             $process = new Process(Config::getBinFile().' -U');
             $process->run();
         } else {
-            self::postInstall($event);
+            self::postInstall();
         }
     }
 
-    public static function postInstall(Event $event)
+    public static function postInstall()
     {
         Config::makeBinDirectory();
         $loop = Factory::create();
