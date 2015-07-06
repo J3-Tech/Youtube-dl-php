@@ -1,4 +1,5 @@
 <?php
+
 namespace Youtubedl\Exceptions;
 
 class YoutubedlException extends \RuntimeException

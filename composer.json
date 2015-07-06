@@ -9,7 +9,17 @@
         }
     ],
     "require": {
-        "symfony/process": ">=2.3"
+        "php": ">=5.4.0",
+        "symfony/process": ">=2.3",
+        "react/react": "dev-master"
+    },
+    "scripts":{
+        "post-update-cmd":[
+            "Youtubedl\\Installation::postUpdate"
+        ],
+        "post-install-cmd":[
+            "Youtubedl\\Installation::postInstall"
+        ]
     },
     "autoload": {
         "psr-0": {

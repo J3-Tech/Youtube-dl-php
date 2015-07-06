@@ -1,5 +1,8 @@
 YouTube-dl-php
 ==============
+[![Build Status](https://travis-ci.org/chellem/Youtube-dl-php.svg?branch=dev)](https://travis-ci.org/chellem/Youtube-dl-php)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/chellem/Youtube-dl-php/badges/quality-score.png?b=dev)](https://scrutinizer-ci.com/g/chellem/Youtube-dl-php/?branch=dev)
+
 This library is a PHP implementation of [Youtube-dl](https://github.com/rg3/youtube-dl) for downloading video from Youtube and other sites.
 
 ## Installation
@@ -23,7 +26,7 @@ Installation using [Composer](https://getcomposer.org):
 use Youtubedl\Youtubedl;
 
 $youtubedl=new Youtubedl();
-$youtubedl->getFilesystemOption()
+$youtubedl->getOption()
           ->setOutput("\"/tmp/%(title)s.%(ext)s\"");
 $youtubedl->download('BaW_jenozKc');
 ```
@@ -33,7 +36,7 @@ $youtubedl->download('BaW_jenozKc');
 use Youtubedl\Youtubedl;
 
 $youtubedl=new Youtubedl();
-$youtubedl->getFilesystemOption()
+$youtubedl->getOption()
           ->setOutput("\"/tmp/%(title)s.%(ext)s\"");
 $youtubedl->download(array('BaW_jenozKc','dOibtqWo6z4'));
 ```
@@ -45,7 +48,7 @@ use Youtubedl\Youtubedl;
 
 $youtubedl=new Youtubedl();
 $youtubedl->getOption()
-          ->getExtractors();
+          ->getListExtractors();
 var_dump($youtubedl->execute());
 ```
 
@@ -67,7 +70,7 @@ use Youtubedl\Youtubedl;
 
 $youtubedl=new Youtubedl();
 $youtubedl->getOption()
-		  ->setUserAgent('Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14')	
-          ->getUserAgent();
+		  ->setUserAgent('Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14')
+          ->dumpUserAgent();
 var_dump($youtubedl->execute());
 ```
