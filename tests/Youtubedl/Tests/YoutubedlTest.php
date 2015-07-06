@@ -48,19 +48,6 @@ class YoutubedlTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function shouldAsyncDownload()
-    {
-        $this->youtubedl
-            ->isAsync(true)
-            ->isVerbose(false)
-            ->getOption()
-            ->setOutput($this->getOutput());
-        $this->assertInternalType('string', $this->download());
-    }
-
-    /**
-     * @test
-     */
     public function shouldVerboseDownload()
     {
         $this->youtubedl
