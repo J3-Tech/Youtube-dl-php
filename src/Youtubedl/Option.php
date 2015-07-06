@@ -17,6 +17,9 @@ class Option
     {
         $cleanMethod = lcfirst(preg_replace('/get|set/', null, $method));
         if (preg_match_all('/[A-Z]/', $cleanMethod, $uppers)) {
+            if (!is_array($uppers)) {
+                throw new \Exception('$uppers must be an array');
+            }
             foreach (current($uppers) as $key => $upper) {
                 $cleanMethod = str_replace($upper, '-'.strtolower($upper), $cleanMethod);
             }
