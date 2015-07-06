@@ -52,6 +52,7 @@ class YoutubedlTest extends \PHPUnit_Framework_TestCase
     {
         $this->youtubedl
             ->isAsync(true)
+            ->isVerbose(false)
             ->getOption()
             ->setOutput($this->getOutput());
         $this->assertInternalType('string', $this->youtubedl->download('BaW_jenozKc'));
@@ -64,6 +65,7 @@ class YoutubedlTest extends \PHPUnit_Framework_TestCase
     {
         $this->youtubedl
             ->isVerbose(true)
+            ->isAsync(false)
             ->getOption()
             ->setOutput($this->getOutput());
         $this->assertInternalType('string', $this->youtubedl->download('BaW_jenozKc'));
@@ -71,7 +73,7 @@ class YoutubedlTest extends \PHPUnit_Framework_TestCase
 
     private function getOutput()
     {
-        return "%(title)s.%(ext)s_{$this->getRand()}";
+        return "'%(title)s.%(ext)s_{$this->getRand()}'";
     }
 
     private function getRand()
