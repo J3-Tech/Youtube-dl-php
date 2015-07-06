@@ -38,8 +38,6 @@ class YoutubedlTest extends \PHPUnit_Framework_TestCase
     public function shouldDownload()
     {
         $this->youtubedl
-            ->isVerbose(false)
-            ->isAsync(false)
             ->getOption()
             ->setOutput($this->getOutput());
         $this->assertInternalType('array', $this->download());
@@ -52,7 +50,6 @@ class YoutubedlTest extends \PHPUnit_Framework_TestCase
     {
         $this->youtubedl
             ->isVerbose(true)
-            ->isAsync(false)
             ->getOption()
             ->setOutput($this->getOutput());
         $this->assertInternalType('array', $this->download());
