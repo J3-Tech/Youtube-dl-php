@@ -21,7 +21,6 @@ class Installation
 
     public static function postInstall(Event $event)
     {
-        $composer = $event->getComposer();
         Config::makeBinDirectory();
         $loop = Factory::create();
         $file = Config::getBinFile();
