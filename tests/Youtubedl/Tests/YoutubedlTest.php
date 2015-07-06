@@ -42,7 +42,7 @@ class YoutubedlTest extends \PHPUnit_Framework_TestCase
             ->isAsync(false)
             ->getOption()
             ->setOutput($this->getOutput());
-        $this->assertInternalType('string', $this->youtubedl->download('BaW_jenozKc'));
+        $this->assertInternalType('array', $this->download());
     }
 
     /**
@@ -55,7 +55,7 @@ class YoutubedlTest extends \PHPUnit_Framework_TestCase
             ->isVerbose(false)
             ->getOption()
             ->setOutput($this->getOutput());
-        $this->assertInternalType('string', $this->youtubedl->download('BaW_jenozKc'));
+        $this->assertInternalType('string', $this->download());
     }
 
     /**
@@ -68,7 +68,12 @@ class YoutubedlTest extends \PHPUnit_Framework_TestCase
             ->isAsync(false)
             ->getOption()
             ->setOutput($this->getOutput());
-        $this->assertInternalType('string', $this->youtubedl->download('BaW_jenozKc'));
+        $this->assertInternalType('array', $this->download());
+    }
+
+    private function download()
+    {
+        $this->youtubedl->download('BaW_jenozKc');
     }
 
     private function getOutput()
