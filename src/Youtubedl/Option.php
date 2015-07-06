@@ -2,6 +2,13 @@
 
 namespace Youtubedl;
 
+/**
+ * @method Option setOutput(string $output)
+ * @method Option getListExtractors()
+ * @method Option getExtractorDescriptions()
+ * @method Option setUserAgent(string $userAgent)
+ * @method Option dumpUserAgent()
+ */
 class Option
 {
     protected $options = [];
