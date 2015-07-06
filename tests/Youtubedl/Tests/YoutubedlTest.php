@@ -46,6 +46,17 @@ class YoutubedlTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function shouldDownloads()
+    {
+        $this->youtubedl
+            ->getOption()
+            ->setOutput($this->getOutput());
+        $this->assertInternalType('array', $this->downloads());
+    }
+
+    /**
+     * @test
+     */
     public function shouldVerboseDownload()
     {
         $this->youtubedl
@@ -55,6 +66,25 @@ class YoutubedlTest extends \PHPUnit_Framework_TestCase
         $this->assertInternalType('array', $this->download());
     }
 
+    /**
+     * @test
+     * @expectedException \Youtubedl\Exceptions\YoutubedlException
+     */
+    public function shouldThrowException()
+    {
+        $this->youtubedl->getOption()
+                    ->getExtractors();
+        $this->youtubedl->execute();
+    }
+
+    private function downloads()
+    {
+        return $this->youtubedl->download([
+            'BaW_jenozKc',
+            'BaW_jenozKc'
+        ]);
+    }
+
     private function download()
     {
         return $this->youtubedl->download('BaW_jenozKc');
@@ -62,7 +92,7 @@ class YoutubedlTest extends \PHPUnit_Framework_TestCase
 
     private function getOutput()
     {
-        return "'%(title)s.%(ext)s_{$this->getRand()}'";
+        return "tmp/%(title)s_{$this->getRand()}.%(ext)s";
     }
 
     private function getRand()
@@ -73,5 +103,12 @@ class YoutubedlTest extends \PHPUnit_Framework_TestCase
     public function setup()
     {
         $this->youtubedl = new Youtubedl();
+    }
+
+    public function tearDown()
+    {
+        foreach (glob('./tmp/*') as $key => $value) {
+            unlink($value);
+        }
     }
 }
