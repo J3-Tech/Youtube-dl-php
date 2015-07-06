@@ -1,7 +1,7 @@
 <?php
+
 namespace Youtubedl\Tests;
 
-use Youtubedl\Youtubedl;
 use Youtubedl\Option;
 
 class OptionTest extends \PHPUnit_Framework_TestCase
@@ -21,7 +21,7 @@ class OptionTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldEmptyOptionBeString()
     {
-        $this->assertInternalType('string', (string)$this->option);
+        $this->assertInternalType('string', (string) $this->option);
     }
 
     /**
@@ -30,7 +30,7 @@ class OptionTest extends \PHPUnit_Framework_TestCase
     public function shouldOptionBeString()
     {
         $this->option->getListExtractors();
-        $this->assertInternalType('string', (string)$this->option);
+        $this->assertInternalType('string', (string) $this->option);
     }
 
     public function setup()

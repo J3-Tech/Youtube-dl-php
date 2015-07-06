@@ -1,4 +1,5 @@
 <?php
+
 if (!$loader = @include __DIR__.'/../vendor/autoload.php') {
     echo <<<EOM
     Install dependencies using Composer:
