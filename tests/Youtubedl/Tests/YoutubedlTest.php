@@ -31,6 +31,32 @@ class YoutubedlTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Youtubedl\Option', $this->youtubedl->getOption());
     }
 
+    /**
+     * @test
+     */
+    public function shouldDownload()
+    {
+        $this->assertInternalType('string', $this->youtubedl->download('BaW_jenozKc'));
+    }
+
+    /**
+     * @test
+     */
+    public function shouldAsyncDownload()
+    {
+        $this->youtubedl->isAsync(true);
+        $this->assertInternalType('string', $this->youtubedl->download('BaW_jenozKc'));
+    }
+
+    /**
+     * @test
+     */
+    public function shouldVerboseDownload()
+    {
+        $this->youtubedl->isVerbose(true);
+        $this->assertInternalType('string', $this->youtubedl->download('BaW_jenozKc'));
+    }
+
     public function setup()
     {
         $this->youtubedl = new Youtubedl();
