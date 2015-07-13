@@ -10,6 +10,7 @@ class Youtubedl
     private $async = false;
     private $verbose = false;
     private $option;
+    private $link;
 
     public function __construct()
     {
@@ -40,13 +41,14 @@ class Youtubedl
         if (is_array($link)) {
             $link = implode(' ', $link);
         }
+        $this->link=$link;
 
-        return $this->execute($link);
+        return $this;
     }
 
-    public function execute($cmd = null)
+    public function execute()
     {
-        $process = new Process(Config::getBinFile()." {$this->option} -- {$cmd}");
+        $process = new Process(Config::getBinFile()." {$this->option} -- {$this->link}");
         if ($this->verbose) {
             $process->run(function($type, $buffer) {
                 if (Process::ERR === $type) {
