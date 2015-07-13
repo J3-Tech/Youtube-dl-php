@@ -27,6 +27,16 @@ class YoutubedlTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function shouldBeDownloadVerbosely()
+    {
+        $this->youtubedl->isVerbose(true);
+        $this->download();
+        $this->assertInternalType('array', $this->youtubedl->execute());
+    }
+
+    /**
+     * @test
+     */
     public function shouldHaveOption()
     {
         $this->assertInstanceOf('Youtubedl\Option', $this->youtubedl->getOption());
@@ -35,35 +45,23 @@ class YoutubedlTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function shouldDownload()
+    public function shouldSetLink()
     {
         $this->youtubedl
             ->getOption()
             ->setOutput($this->getOutput());
-        $this->assertInternalType('array', $this->download());
+        $this->assertInstanceOf('Youtubedl\Youtubedl', $this->download());
     }
 
     /**
      * @test
      */
-    public function shouldDownloads()
+    public function shouldSetLinks()
     {
         $this->youtubedl
             ->getOption()
             ->setOutput($this->getOutput());
-        $this->assertInternalType('array', $this->downloads());
-    }
-
-    /**
-     * @test
-     */
-    public function shouldVerboseDownload()
-    {
-        $this->youtubedl
-            ->isVerbose(true)
-            ->getOption()
-            ->setOutput($this->getOutput());
-        $this->assertInternalType('array', $this->download());
+        $this->assertInstanceOf('Youtubedl\Youtubedl', $this->downloads());
     }
 
     /**
@@ -87,7 +85,9 @@ class YoutubedlTest extends \PHPUnit_Framework_TestCase
 
     private function download()
     {
-        return $this->youtubedl->download('BaW_jenozKc');
+        return $this->youtubedl
+                    ->isVerbose(true)
+                    ->download('BaW_jenozKc');
     }
 
     private function getOutput()
