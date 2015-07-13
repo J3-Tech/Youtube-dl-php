@@ -4,7 +4,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 use Youtubedl\Youtubedl;
 
-$youtubedl=new Youtubedl();
+$youtubedl = new Youtubedl();
 $youtubedl->getOption()
         ->setOutput("'/tmp/%(title)s.%(ext)s'");
 $youtubedl->isVerbose(true)

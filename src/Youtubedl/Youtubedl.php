@@ -41,7 +41,7 @@ class Youtubedl
         if (is_array($link)) {
             $link = implode(' ', $link);
         }
-        $this->link=$link;
+        $this->link = $link;
 
         return $this;
     }
