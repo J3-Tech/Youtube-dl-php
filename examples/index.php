@@ -11,13 +11,18 @@ $youtubedl->isVerbose(true)
         ->download('BaW_jenozKc')
         ->getOption()
         ->getListExtractors();
-print_r($youtubedl->execute());
+foreach ($youtubedl->execute() as $output) {
+    echo "{$output}\n";
+}
 
 $youtubedl->getOption()
         ->getExtractorDescriptions();
-print_r($youtubedl->execute());
-
+foreach ($youtubedl->execute() as $output) {
+    echo "{$output}\n";
+}
 $youtubedl->getOption()
         ->setUserAgent('Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14')
         ->dumpUserAgent();
-print_r($youtubedl->execute());
+foreach ($youtubedl->execute() as $output) {
+    echo "{$output}\n";
+}
