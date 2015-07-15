@@ -1,7 +1,10 @@
 YouTube-dl-php
 ==============
-[![Build Status](https://travis-ci.org/chellem/Youtube-dl-php.svg?branch=master)](https://travis-ci.org/chellem/Youtube-dl-php)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/chellem/Youtube-dl-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/chellem/Youtube-dl-php/?branch=master)
+[![Build Status](https://travis-ci.org/labzone/Youtube-dl-php.svg?branch=master)](https://travis-ci.org/labzone/Youtube-dl-php)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/labzone/Youtube-dl-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/labzone/Youtube-dl-php/?branch=master)
+![License](https://img.shields.io/badge/license-MIT-blue.svg
+)
+
 
 This library is a PHP implementation of [Youtube-dl](https://github.com/rg3/youtube-dl) for downloading video from Youtube and other sites.
 
@@ -28,7 +31,8 @@ use Youtubedl\Youtubedl;
 $youtubedl=new Youtubedl();
 $youtubedl->getOption()
           ->setOutput("\"/tmp/%(title)s.%(ext)s\"");
-$youtubedl->download('BaW_jenozKc');
+$youtubedl->download('BaW_jenozKc')
+		  ->execute();
 ```
 
 ###Multiple Download
@@ -38,7 +42,8 @@ use Youtubedl\Youtubedl;
 $youtubedl=new Youtubedl();
 $youtubedl->getOption()
           ->setOutput("\"/tmp/%(title)s.%(ext)s\"");
-$youtubedl->download(array('BaW_jenozKc','dOibtqWo6z4'));
+$youtubedl->download(array('BaW_jenozKc','dOibtqWo6z4'))
+          ->execute();
 ```
 
 ###Extractor List
