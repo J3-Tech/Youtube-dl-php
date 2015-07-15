@@ -27,6 +27,16 @@ class YoutubedlTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function shouldBeDownloadVerbosely()
+    {
+        $this->youtubedl->isVerbose(true);
+        $this->download();
+        $this->assertInternalType('array', $this->youtubedl->execute());
+    }
+
+    /**
+     * @test
+     */
     public function shouldHaveOption()
     {
         $this->assertInstanceOf('Youtubedl\Option', $this->youtubedl->getOption());
@@ -35,34 +45,54 @@ class YoutubedlTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function shouldDownload()
+    public function shouldSetLink()
     {
         $this->youtubedl
             ->getOption()
             ->setOutput($this->getOutput());
-        $this->assertInternalType('array', $this->download());
+        $this->assertInstanceOf('Youtubedl\Youtubedl', $this->download());
     }
 
     /**
      * @test
      */
-    public function shouldVerboseDownload()
+    public function shouldSetLinks()
     {
         $this->youtubedl
-            ->isVerbose(true)
             ->getOption()
             ->setOutput($this->getOutput());
-        $this->assertInternalType('array', $this->download());
+        $this->assertInstanceOf('Youtubedl\Youtubedl', $this->downloads());
+    }
+
+    /**
+     * @test
+     * @expectedException \Youtubedl\Exceptions\YoutubedlException
+     */
+    public function shouldThrowException()
+    {
+        $this->youtubedl->getOption()
+                    ->getExtractors();
+        $this->youtubedl->execute();
+    }
+
+    private function downloads()
+    {
+        return $this->youtubedl->download([
+            'BaW_jenozKc',
+            'BaW_jenozKc'
+        ]);
     }
 
     private function download()
     {
-        return $this->youtubedl->download('BaW_jenozKc');
+        return $this->youtubedl
+                    ->isVerbose(true)
+                    ->download('BaW_jenozKc');
     }
 
     private function getOutput()
     {
-        return "'%(title)s.%(ext)s_{$this->getRand()}'";
+        return "tmp/%(title)s_{$this->getRand()}.%(ext)s";
     }
 
     private function getRand()
@@ -73,5 +103,12 @@ class YoutubedlTest extends \PHPUnit_Framework_TestCase
     public function setup()
     {
         $this->youtubedl = new Youtubedl();
+    }
+
+    public function tearDown()
+    {
+        foreach (glob('./tmp/*') as $key => $value) {
+            unlink($value);
+        }
     }
 }

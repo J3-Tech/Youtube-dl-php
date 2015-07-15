@@ -26,7 +26,7 @@ class Config
         return file_exists(self::getBinFile());
     }
 
-    public static function BinDirectoryExists()
+    public static function binDirectoryExists()
     {
         $binDirectory = self::getBinDirectory();
         if (file_exists($binDirectory) && is_dir($binDirectory)) {

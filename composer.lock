@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2024d8fe83b26299d136e25d3db47db1",
+    "hash": "953e46f32548379ba0df03aff1829940",
     "packages": [
         {
             "name": "evenement/evenement",
@@ -501,16 +501,16 @@
         },
         {
             "name": "react/react",
-            "version": "dev-master",
+            "version": "v0.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/react.git",
-                "reference": "fdcc9808ef9fafa8a61c119ba81d1630f3ee947a"
+                "reference": "457b6b8a16a37c11278cac0870d6d2ff911c5765"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/react/zipball/fdcc9808ef9fafa8a61c119ba81d1630f3ee947a",
-                "reference": "fdcc9808ef9fafa8a61c119ba81d1630f3ee947a",
+                "url": "https://api.github.com/repos/reactphp/react/zipball/457b6b8a16a37c11278cac0870d6d2ff911c5765",
+                "reference": "457b6b8a16a37c11278cac0870d6d2ff911c5765",
                 "shasum": ""
             },
             "require": {
@@ -550,7 +550,7 @@
                 "event-loop",
                 "reactor"
             ],
-            "time": "2015-03-19 21:31:56"
+            "time": "2014-12-11 02:06:55"
         },
         {
             "name": "react/socket",
@@ -736,9 +736,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "react/react": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
