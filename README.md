@@ -1,4 +1,6 @@
 # YouTube-dl-php
+
+[![Join the chat at https://gitter.im/labzone/Youtube-dl-php](https://badges.gitter.im/labzone/Youtube-dl-php.svg)](https://gitter.im/labzone/Youtube-dl-php?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/labzone/Youtube-dl-php.svg?branch=master)](https://travis-ci.org/labzone/Youtube-dl-php) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/labzone/Youtube-dl-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/labzone/Youtube-dl-php/?branch=master) ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 This library is a PHP implementation of [Youtube-dl](https://github.com/rg3/youtube-dl) for downloading video from Youtube and other sites.
