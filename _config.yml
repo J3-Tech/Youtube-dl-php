@@ -1,0 +1,8 @@
+Name: Youtube-dl PHP
+description: Download youtube videos from PHP
+google_analytics: UA-102596687-1
+permalink: /:title/
+theme: jekyll-theme-cayman
+gems:
+  - jekyll-sitemap
+  - jekyll-feed
