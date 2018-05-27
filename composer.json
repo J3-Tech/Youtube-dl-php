@@ -4,23 +4,21 @@
     "keywords": ["youtube", "download"],
     "license": "MIT",
     "type": "library",
-    "authors": [
-        {
-            "name": " Dickriven Chellemboyee",
-            "email": "chellem.void@gmail.com",
-            "role": "Developer"
-        }
-    ],
+    "authors": [{
+        "name": " Dickriven Chellemboyee",
+        "email": "dickriven@chellemboyee.com",
+        "role": "Developer"
+    }],
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=5.6.0",
         "symfony/process": "~2.8",
         "react/react": "*"
     },
-    "scripts":{
-        "post-update-cmd":[
+    "scripts": {
+        "post-update-cmd": [
             "Youtubedl\\Installation::postUpdate"
         ],
-        "post-install-cmd":[
+        "post-install-cmd": [
             "Youtubedl\\Installation::postInstall"
         ]
     },
