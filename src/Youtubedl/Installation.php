@@ -11,7 +11,7 @@ class Installation
     public static function postUpdate()
     {
         if (file_exists(Config::getBinFile())) {
-            $process = new Process(Config::getBinFile().' -U');
+            $process = new Process([Config::getBinFile(), '-U']);
             $process->run();
         } else {
             self::postInstall();
