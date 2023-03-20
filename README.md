@@ -1,10 +1,9 @@
 # YouTube-dl-php
 
-[![Latest Stable Version](https://poser.pugx.org/chellem/youtube-downloader/v/stable)](https://packagist.org/packages/chellem/youtube-downloader)
+![PHP](https://github.com/J3-Tech/Youtube-dl-php/actions/workflows/php.yml/badge.svg)
+![PHPMD](https://github.com/J3-Tech/Youtube-dl-php/actions/workflows/phpmd.yml/badge.svg)
 [![Total Downloads](https://poser.pugx.org/chellem/youtube-downloader/downloads)](https://packagist.org/packages/chellem/youtube-downloader)
-[![Latest Unstable Version](https://poser.pugx.org/chellem/youtube-downloader/v/unstable)](https://packagist.org/packages/chellem/youtube-downloader)
-[![License](https://poser.pugx.org/chellem/youtube-downloader/license)](https://packagist.org/packages/chellem/youtube-downloader)
-[![composer.lock](https://poser.pugx.org/chellem/youtube-downloader/composerlock)](https://packagist.org/packages/chellem/youtube-downloader)
+
 
 This library is a PHP implementation of [Youtube-dl](https://github.com/rg3/youtube-dl) for downloading video from Youtube and other sites.
 
