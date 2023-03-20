@@ -5,7 +5,7 @@
 [![Total Downloads](https://poser.pugx.org/chellem/youtube-downloader/downloads)](https://packagist.org/packages/chellem/youtube-downloader)
 
 
-This library is a PHP implementation of [Youtube-dl](https://github.com/rg3/youtube-dl) for downloading video from Youtube and other sites.
+This library is a PHP implementation of [Youtube-dl](https://github.com/yt-dlp/yt-dlp) for downloading video from Youtube and other streaming sites.
 
 ## Installation
 [Youtube-dl](https://github.com/rg3/youtube-dl) has must be installed first.
