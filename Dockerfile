@@ -1,4 +1,4 @@
-FROM php:8.2-cli
+FROM ghcr.io/j3-tech/docker-php-dev:main
 
-RUN curl -sSL https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions -o - | sh -s \
-      @composer
+RUN apt update && \
+    apt install python3 -y

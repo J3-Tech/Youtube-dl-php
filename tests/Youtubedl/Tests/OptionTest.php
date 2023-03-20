@@ -2,9 +2,10 @@
 
 namespace Youtubedl\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Youtubedl\Option;
 
-class OptionTest extends \PHPUnit_Framework_TestCase
+class OptionTest extends TestCase
 {
     protected $option;
 
@@ -21,7 +22,7 @@ class OptionTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldEmptyOptionBeString()
     {
-        $this->assertInternalType('string', (string) $this->option);
+        $this->assertIsString((string) $this->option);
     }
 
     /**
@@ -31,10 +32,10 @@ class OptionTest extends \PHPUnit_Framework_TestCase
     {
         $this->option->getListExtractors()
             ->setUserAgent('Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14');
-        $this->assertInternalType('string', (string) $this->option);
+        $this->assertIsString((string) $this->option);
     }
 
-    public function setup()
+    public function setUp(): void
     {
         $this->option = new Option();
     }

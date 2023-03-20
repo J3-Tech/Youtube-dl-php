@@ -15,7 +15,7 @@ class Option
 
     public function __call($method, $args)
     {
-        $cleanMethod = lcfirst(preg_replace('/get|set/', null, $method));
+        $cleanMethod = lcfirst(preg_replace('/get|set/', '', $method));
         if (preg_match_all('/[A-Z]/', $cleanMethod, $uppers)) {
             if (!is_array($uppers)) {
                 throw new \Exception('$uppers must be an array');

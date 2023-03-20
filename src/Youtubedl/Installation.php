@@ -12,7 +12,15 @@ class Installation
     {
         if (file_exists(Config::getBinFile())) {
             $process = new Process([Config::getBinFile(), '-U']);
-            $process->run();
+            $process->run(function ($type, $buffer) {
+                if (Process::ERR === $type) {
+                    echo 'ERR > '.$buffer;
+                } else {
+                    echo 'OUT > '.$buffer;
+                }
+            });
+            $process = new Process(['chmod', '+x', Config::getBinFile()]);
+            $process->start();
         } else {
             self::postInstall();
         }
@@ -22,7 +30,7 @@ class Installation
     {
         Config::makeBinDirectory();
         $file = Config::getBinFile();
-        $url = 'https://yt-dl.org/downloads/latest/youtube-dl';
+        $url = 'https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp';
         $readStream = fopen($url, 'r');
         $writeStream = fopen($file, 'w');
         stream_set_blocking($readStream, 0);
@@ -30,7 +38,12 @@ class Installation
         $read = new ReadableResourceStream($readStream);
         $write = new WritableResourceStream($writeStream);
         $read->on('end', function() use ($file) {
-            chmod($file, 0777);
+            $process = new Process(['chmod', '+x', Config::getBinFile()]);
+            $process->start();
+            while ($process->isRunning()) {
+                // waiting for process to finish
+            }
+            echo $process->getOutput();
             echo "Finished downloading $file\n";
         });
         $read->pipe($write);

@@ -2,10 +2,11 @@
 
 namespace Youtubedl\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Youtubedl\Installation;
 use Youtubedl\Config;
 
-class InstallationTest extends \PHPUnit_Framework_TestCase
+class InstallationTest extends TestCase
 {
     /**
      * @test
