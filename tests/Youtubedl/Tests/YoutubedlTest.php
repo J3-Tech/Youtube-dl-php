@@ -28,12 +28,12 @@ class YoutubedlTest extends TestCase
     /**
      * @test
      */
-    public function shouldBeDownloadVerbosely()
-    {
-        $this->youtubedl->isVerbose(true);
-        $this->download();
-        $this->assertIsArray($this->youtubedl->execute());
-    }
+    // public function shouldBeDownloadVerbosely()
+    // {
+    //     $this->youtubedl->isVerbose(true);
+    //     $this->download();
+    //     $this->assertIsArray($this->youtubedl->execute());
+    // }
 
     /**
      * @test

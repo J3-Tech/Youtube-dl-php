@@ -18,6 +18,7 @@ class ConfigTest extends TestCase
 
     /**
      * @test
+     * @depends shouldDeleteBinDirectory
      */
     public function shouldCreateBinDirectory()
     {

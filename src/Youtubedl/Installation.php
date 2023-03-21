@@ -11,22 +11,37 @@ class Installation
     public static function postUpdate()
     {
         if (file_exists(Config::getBinFile())) {
-            $process = new Process([Config::getBinFile(), '-U']);
-            $process->run(function ($type, $buffer) {
-                if (Process::ERR === $type) {
-                    echo 'ERR > '.$buffer;
-                } else {
-                    echo 'OUT > '.$buffer;
-                }
+            self::setPermission(function(){
+                self::update();
             });
-            $process = new Process(['chmod', '+x', Config::getBinFile()]);
-            $process->start();
         } else {
             self::postInstall();
         }
     }
 
     public static function postInstall()
+    {
+        self::download(function() {
+            self::setPermission(function() {
+                self::update();
+            });
+        });
+    }
+
+    private static function setPermission($callback)
+    {
+        $process = new Process(['chmod', '+x', Config::getBinFile()]);
+        $process->run(function ($type, $buffer) use ($callback) {
+            if (Process::ERR === $type) {
+                echo 'ERR > '.$buffer;
+            } else {
+                echo 'OUT > '.$buffer;
+                $callback();
+            }
+        });
+    }
+
+    private static function download($callback)
     {
         Config::makeBinDirectory();
         $file = Config::getBinFile();
@@ -37,15 +52,21 @@ class Installation
         stream_set_blocking($writeStream, 0);
         $read = new ReadableResourceStream($readStream);
         $write = new WritableResourceStream($writeStream);
-        $read->on('end', function() use ($file) {
-            $process = new Process(['chmod', '+x', Config::getBinFile()]);
-            $process->start();
-            while ($process->isRunning()) {
-                // waiting for process to finish
-            }
-            echo $process->getOutput();
+        $read->on('end', function() use ($file, $callback) {
+            $callback();
             echo "Finished downloading $file\n";
         });
         $read->pipe($write);
+    }
+
+    private static function update() {
+        $process = new Process([Config::getBinFile(), '-U']);
+        $process->run(function ($type, $buffer) {
+            if (Process::ERR === $type) {
+                echo 'ERR > '.$buffer;
+            } else {
+                echo 'OUT > '.$buffer;
+            }
+        });
     }
 }
