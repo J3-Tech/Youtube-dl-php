@@ -32,5 +32,21 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
-    - name: Run test suite
-      run: composer run-script test
+#     - name: Run test suite
+#       run: composer run-script test
+    - name: PHPUnit Tests
+      uses: php-actions/phpunit@v3
+      env:
+        XDEBUG_MODE: coverage
+      with:
+         bootstrap: vendor/autoload.php
+         configuration: phpunit.xml
+         php_extensions: xdebug
+         args: tests --coverage-clover ./coverage.xml
+
+    - name: Upload to Codecov
+      uses: codecov/codecov-action@v2
+      with:
+         token: ${{ secrets.CODE_COV_TOKEN }}
+         files: ./coverage.xml
+         verbose: true
