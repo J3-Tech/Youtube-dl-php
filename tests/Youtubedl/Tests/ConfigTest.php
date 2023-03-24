@@ -10,19 +10,16 @@ class ConfigTest extends TestCase
     /**
      * @test
      */
-    public function shouldDeleteBinDirectory()
+    public function shouldGetBin()
     {
-        Config::removeBinDirectory();
-        $this->assertFalse(Config::BinDirectoryExists());
+        $this->assertIsString(Config::getBinFile());
     }
 
     /**
      * @test
-     * @depends shouldDeleteBinDirectory
      */
-    public function shouldCreateBinDirectory()
+    public function shouldExist()
     {
-        Config::makeBinDirectory();
-        $this->assertTrue(Config::BinDirectoryExists());
+        $this->assertTrue(Config::binExists());
     }
 }

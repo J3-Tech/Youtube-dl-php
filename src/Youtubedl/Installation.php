@@ -43,7 +43,6 @@ class Installation
 
     private static function download($callback)
     {
-        Config::makeBinDirectory();
         $file = Config::getBinFile();
         $url = 'https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp';
         $readStream = fopen($url, 'r');
