@@ -48,7 +48,7 @@ class Youtubedl
 
     public function execute()
     {
-        $process = new Process([Config::getBinFile(), "{$this->option} {$this->link}"]);
+        $process = new Process(array_filter([Config::getBinFile(), (string) $this->option, $this->link]));
         if ($this->verbose) {
             $process->run(function($type, $buffer) {
                 if (Process::ERR === $type) {

@@ -31,7 +31,7 @@ class Option
 
     public function __toString()
     {
-        return $this->format();
+        return trim($this->format());
     }
 
     private function format()
