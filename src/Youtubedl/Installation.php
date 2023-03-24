@@ -43,7 +43,9 @@ class Installation
     {
         $file = Config::getBinFile();
         $url = 'https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp';
-        $client = new Client();
+        $client = new Client([
+            'verify' => false
+        ]);
         $client->request('GET', $url, ['sink' => $file]);
     }
 
