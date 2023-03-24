@@ -8,7 +8,7 @@
   <testsuites>
     <testsuite name="Youtubedl Test Suite">
       <file>./tests/Youtubedl/Tests/ConfigTest.php</file>
-      <!-- <file>./tests/Youtubedl/Tests/InstallationTest.php</file> -->
+      <file>./tests/Youtubedl/Tests/InstallationTest.php</file>
       <file>./tests/Youtubedl/Tests/OptionTest.php</file>
       <file>./tests/Youtubedl/Tests/YoutubedlTest.php</file>
     </testsuite>

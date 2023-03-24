@@ -2,8 +2,7 @@
 
 namespace Youtubedl;
 
-use React\Stream\ReadableResourceStream;
-use React\Stream\WritableResourceStream;
+use GuzzleHttp\Client;
 use Symfony\Component\Process\Process;
 
 class Installation
@@ -21,10 +20,9 @@ class Installation
 
     public static function postInstall()
     {
-        self::download(function() {
-            self::setPermission(function() {
-                self::update();
-            });
+        self::download();
+        self::setPermission(function() {
+            self::update();
         });
     }
 
@@ -41,21 +39,12 @@ class Installation
         });
     }
 
-    private static function download($callback)
+    private static function download()
     {
         $file = Config::getBinFile();
         $url = 'https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp';
-        $readStream = fopen($url, 'r');
-        $writeStream = fopen($file, 'w');
-        stream_set_blocking($readStream, 0);
-        stream_set_blocking($writeStream, 0);
-        $read = new ReadableResourceStream($readStream);
-        $write = new WritableResourceStream($writeStream);
-        $read->on('end', function() use ($file, $callback) {
-            $callback();
-            echo "Finished downloading $file\n";
-        });
-        $read->pipe($write);
+        $client = new Client();
+        $client->request('GET', $url, ['sink' => $file]);
     }
 
     private static function update() {
