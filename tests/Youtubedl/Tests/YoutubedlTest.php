@@ -28,12 +28,12 @@ class YoutubedlTest extends TestCase
     /**
      * @test
      */
-    // public function shouldBeDownloadVerbosely()
-    // {
-    //     $this->youtubedl->isVerbose(true);
-    //     $this->download();
-    //     $this->assertIsArray($this->youtubedl->execute());
-    // }
+    public function shouldBeDownloadVerbosely()
+    {
+        $this->youtubedl->isVerbose(true);
+        $this->download();
+        $this->assertIsArray($this->youtubedl->execute());
+    }
 
     /**
      * @test
@@ -107,10 +107,10 @@ class YoutubedlTest extends TestCase
         $this->youtubedl = new Youtubedl();
     }
 
-    // public function tearDown(): void
-    // {
-    //     foreach (glob('./tmp/*') as $key => $value) {
-    //         unlink($value);
-    //     }
-    // }
+    public function tearDown(): void
+    {
+        foreach (glob('*.mp4') as $key => $value) {
+            unlink($value);
+        }
+    }
 }
