@@ -10,9 +10,8 @@ class Installation
     public static function postUpdate()
     {
         if (file_exists(Config::getBinFile())) {
-            self::setPermission(function(){
-                self::update();
-            });
+            self::setPermission();
+            self::update();
         } else {
             self::postInstall();
         }
@@ -21,20 +20,18 @@ class Installation
     public static function postInstall()
     {
         self::download();
-        self::setPermission(function() {
-            self::update();
-        });
+        self::setPermission();
+        self::update();
     }
 
-    private static function setPermission($callback)
+    private static function setPermission()
     {
         $process = new Process(['chmod', '+x', Config::getBinFile()]);
-        $process->run(function ($type, $buffer) use ($callback) {
+        $process->run(function ($type, $buffer) {
             if (Process::ERR === $type) {
                 echo 'ERR > '.$buffer;
             } else {
                 echo 'OUT > '.$buffer;
-                $callback();
             }
         });
     }
