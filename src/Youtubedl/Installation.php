@@ -27,9 +27,7 @@ class Installation
     private static function setPermission()
     {
         $process = new Process(['chmod', '+x', Config::getBinFile()]);
-        $process->run(function ($type, $buffer) {
-            echo "{$type} > {$buffer}";
-        });
+        $process->run();
     }
 
     private static function download()
