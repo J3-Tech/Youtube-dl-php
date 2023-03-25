@@ -1,6 +1,6 @@
 # YouTube-dl-php
 
-[![PHP](https://github.com/J3-Tech/Youtube-dl-php/actions/workflows/php.yml/badge.svg)](https://github.com/J3-Tech/Youtube-dl-php/actions/workflows/php.yml)
+[![Test](https://github.com/J3-Tech/Youtube-dl-php/actions/workflows/test.yml/badge.svg)](https://github.com/J3-Tech/Youtube-dl-php/actions/workflows/test.yml)
 [![PHPMD](https://github.com/J3-Tech/Youtube-dl-php/actions/workflows/phpmd.yml/badge.svg)](https://github.com/J3-Tech/Youtube-dl-php/actions/workflows/phpmd.yml)
 [![codecov](https://codecov.io/gh/J3-Tech/Youtube-dl-php/branch/master/graph/badge.svg?token=IlyZn4cNLS)](https://codecov.io/gh/J3-Tech/Youtube-dl-php)
 [![Total Downloads](https://poser.pugx.org/chellem/youtube-downloader/downloads)](https://packagist.org/packages/chellem/youtube-downloader)
