@@ -19,15 +19,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    # - name: Login to DockerHub
-    #   run: docker login -u $DOCKER_USER -p $DOCKER_PASS
-
-    - name: Build docker images
-      run: docker compose build
-
-    - name: Composer install
-      run: docker compose run --rm php composer install
-
     - name: Log into registry ${{ env.REGISTRY }}
       if: github.event_name != 'pull_request'
       uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
@@ -35,6 +26,12 @@ jobs:
         registry: ${{ env.REGISTRY }}
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Build docker images
+      run: docker compose build
+
+    - name: Composer install
+      run: docker compose run --rm php composer install
 
     - name: Run tests
       run: docker compose run --rm php ./vendor/bin/phpunit --coverage-clover ./coverage.xml
