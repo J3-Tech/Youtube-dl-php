@@ -31,7 +31,7 @@ jobs:
     #   run: docker login ${{ env.REGISTRY }} -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build docker images
-      run:  docker login ${{ env.REGISTRY }} -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} && docker compose build
+      run: docker compose build
 
     - name: Composer install
       run: docker compose run --rm php composer install
