@@ -19,7 +19,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
     - name: Install dependencies
-      run: ln -s /usr/bin/python /usr/bin/python3
+      run: alias python3=python
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
