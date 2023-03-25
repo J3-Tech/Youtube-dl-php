@@ -67,14 +67,15 @@ class YoutubedlTest extends TestCase
 
     /**
      * @test
-     * @expectedException \Youtubedl\Exceptions\YoutubedlException
      */
-    // public function shouldThrowException()
-    // {
-    //     $this->youtubedl->getOption()
-    //                 ->getExtractors();
-    //     $this->youtubedl->execute();
-    // }
+    public function shouldThrowException()
+    {
+        $this->expectException(\Youtubedl\Exceptions\YoutubedlException::class);
+
+        $this->youtubedl->getOption()
+                    ->getExtractors();
+        $this->youtubedl->execute();
+    }
 
 
     private function downloads()
