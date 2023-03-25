@@ -30,7 +30,7 @@ use Youtubedl\Youtubedl;
 $youtubedl=new Youtubedl();
 $youtubedl->getOption()
           ->setOutput("\"/tmp/%(title)s.%(ext)s\"");
-$youtubedl->download('BaW_jenozKc')
+$youtubedl->download('https://www.youtube.com/watch?v=BaW_jenozKc')
           ->execute();
 ```
 
@@ -42,8 +42,10 @@ use Youtubedl\Youtubedl;
 $youtubedl=new Youtubedl();
 $youtubedl->getOption()
           ->setOutput("\"/tmp/%(title)s.%(ext)s\"");
-$youtubedl->download(array('BaW_jenozKc','dOibtqWo6z4'))
-          ->execute();
+$youtubedl->download([
+    'https://www.youtube.com/watch?v=BaW_jenozKc',
+    'https://www.youtube.com/watch?v=dOibtqWo6z4'
+])->execute();
 ```
 
 ### Extractor List
