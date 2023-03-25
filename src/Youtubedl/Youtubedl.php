@@ -50,12 +50,8 @@ class Youtubedl
     {
         $process = new Process(array_filter([Config::getBinFile(), (string) $this->option, $this->link]));
         if ($this->verbose) {
-            $process->run(function($type, $buffer) {
-                if (Process::ERR === $type) {
-                    echo 'ERR > '.$buffer;
-                } else {
-                    echo 'OUT > '.$buffer;
-                }
+            $process->run(function ($type, $buffer) {
+                echo "{$type} > {$buffer}";
             });
         } else {
             ($this->async) ? $process->start() : $process->run();
