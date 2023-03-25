@@ -3,6 +3,9 @@ on:
   pull_request:
   push: { branches: master }
 
+env:
+  REGISTRY: ghcr.io
+
 jobs:
   test:
     name: Run test suite
@@ -24,6 +27,14 @@ jobs:
 
     - name: Composer install
       run: docker compose run --rm php composer install
+
+    - name: Log into registry ${{ env.REGISTRY }}
+      if: github.event_name != 'pull_request'
+      uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Run tests
       run: docker compose run --rm php ./vendor/bin/phpunit --coverage-clover ./coverage.xml
