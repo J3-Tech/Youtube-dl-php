@@ -28,11 +28,7 @@ class Installation
     {
         $process = new Process(['chmod', '+x', Config::getBinFile()]);
         $process->run(function ($type, $buffer) {
-            if (Process::ERR === $type) {
-                echo 'ERR > '.$buffer;
-            } else {
-                echo 'OUT > '.$buffer;
-            }
+            echo "{$type} > {$buffer}";
         });
     }
 
@@ -49,11 +45,7 @@ class Installation
     private static function update() {
         $process = new Process([Config::getBinFile(), '-U']);
         $process->run(function ($type, $buffer) {
-            if (Process::ERR === $type) {
-                echo 'ERR > '.$buffer;
-            } else {
-                echo 'OUT > '.$buffer;
-            }
+            echo "{$type} > {$buffer}";
         });
     }
 }
