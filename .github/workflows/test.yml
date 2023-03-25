@@ -1,0 +1,36 @@
+name: Test
+on:
+  pull_request:
+  push: { branches: master }
+
+jobs:
+  test:
+    name: Run test suite
+    runs-on: ubuntu-latest
+    env:
+      COMPOSE_FILE: docker-compose.yml
+      DOCKER_USER: ${{ secrets.DOCKER_USER }}
+      DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # - name: Login to DockerHub
+    #   run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+
+    - name: Build docker images
+      run: docker compose build
+
+    - name: Composer install
+      run: docker compose run --rm php composer install
+
+    - name: Run tests
+      run: docker compose run --rm php ./vendor/bin/phpunit --coverage-clover ./coverage.xml
+
+   - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+         token: ${{ secrets.CODE_COV_TOKEN }}
+         files: ./coverage.xml
+         verbose: true
