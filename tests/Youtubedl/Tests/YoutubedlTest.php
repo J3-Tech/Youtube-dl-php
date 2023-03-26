@@ -38,6 +38,19 @@ class YoutubedlTest extends TestCase
     /**
      * @test
      */
+    public function shouldExtractAudio()
+    {
+        $this->youtubedl->isVerbose(true);
+        $this->youtubedl->getOption()
+            ->extractAudio();
+        $this->download();
+        $this->assertIsArray($this->youtubedl->execute());
+    }
+
+
+    /**
+     * @test
+     */
     public function shouldHaveOption()
     {
         $this->assertInstanceOf('Youtubedl\Option', $this->youtubedl->getOption());
