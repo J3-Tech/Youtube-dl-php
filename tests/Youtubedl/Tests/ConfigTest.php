@@ -10,7 +10,7 @@ class ConfigTest extends TestCase
     /**
      * @test
      */
-    public function shouldGetBin()
+    public function shouldGetBin(): void
     {
         $this->assertIsString(Config::getBinFile());
     }
@@ -18,7 +18,7 @@ class ConfigTest extends TestCase
     /**
      * @test
      */
-    public function shouldExist()
+    public function shouldExist(): void
     {
         $this->assertTrue(Config::binExists());
     }

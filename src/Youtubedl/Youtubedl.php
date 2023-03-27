@@ -17,26 +17,26 @@ class Youtubedl
         $this->option = new Option();
     }
 
-    public function isAsync($bool = false)
+    public function isAsync(bool $bool = false): Youtubedl
     {
         $this->async = $bool;
 
         return $this;
     }
 
-    public function isVerbose($bool = false)
+    public function isVerbose(bool $bool = false): Youtubedl
     {
         $this->verbose = $bool;
 
         return $this;
     }
 
-    public function getOption()
+    public function getOption(): Option
     {
         return $this->option;
     }
 
-    public function download($link)
+    public function download(mixed $link): Youtubedl
     {
         if (is_array($link)) {
             $link = implode(' ', $link);
@@ -46,7 +46,7 @@ class Youtubedl
         return $this;
     }
 
-    public function execute()
+    public function execute(): array
     {
         $commands = array_filter(array_merge([Config::getBinFile(), $this->link], $this->option->format()));
         $process = new Process($commands);

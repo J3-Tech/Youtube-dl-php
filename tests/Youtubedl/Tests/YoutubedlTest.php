@@ -12,7 +12,7 @@ class YoutubedlTest extends TestCase
     /**
      * @test
      */
-    public function shouldBeAsync()
+    public function shouldBeAsync(): void
     {
         $this->assertInstanceOf('Youtubedl\Youtubedl', $this->youtubedl->isAsync(true));
     }
@@ -20,7 +20,7 @@ class YoutubedlTest extends TestCase
     /**
      * @test
      */
-    public function shouldBeVerbose()
+    public function shouldBeVerbose(): void
     {
         $this->assertInstanceOf('Youtubedl\Youtubedl', $this->youtubedl->isVerbose(true));
     }
@@ -28,7 +28,7 @@ class YoutubedlTest extends TestCase
     /**
      * @test
      */
-    public function shouldBeDownloadVerbosely()
+    public function shouldBeDownloadVerbosely(): void
     {
         $this->youtubedl->isVerbose(true);
         $this->download();
@@ -38,7 +38,7 @@ class YoutubedlTest extends TestCase
     /**
      * @test
      */
-    public function shouldExtractAudio()
+    public function shouldExtractAudio(): void
     {
         $this->youtubedl->isVerbose(true);
         $this->youtubedl->getOption()
@@ -52,7 +52,7 @@ class YoutubedlTest extends TestCase
     /**
      * @test
      */
-    public function shouldHaveOption()
+    public function shouldHaveOption(): void
     {
         $this->assertInstanceOf('Youtubedl\Option', $this->youtubedl->getOption());
     }
@@ -60,7 +60,7 @@ class YoutubedlTest extends TestCase
     /**
      * @test
      */
-    public function shouldSetLink()
+    public function shouldSetLink(): void
     {
         $this->assertInstanceOf('Youtubedl\Youtubedl', $this->download());
     }
@@ -68,7 +68,7 @@ class YoutubedlTest extends TestCase
     /**
      * @test
      */
-    public function shouldSetLinks()
+    public function shouldSetLinks(): void
     {
         $this->assertInstanceOf('Youtubedl\Youtubedl', $this->downloads());
     }
@@ -76,7 +76,7 @@ class YoutubedlTest extends TestCase
     /**
      * @test
      */
-    public function shouldThrowException()
+    public function shouldThrowException(): void
     {
         $this->expectException(\Youtubedl\Exceptions\YoutubedlException::class);
 
@@ -86,7 +86,7 @@ class YoutubedlTest extends TestCase
     }
 
 
-    private function downloads()
+    private function downloads(): Youtubedl
     {
         return $this->youtubedl->download([
             'https://www.youtube.com/watch?v=BaW_jenozKc',
@@ -94,14 +94,14 @@ class YoutubedlTest extends TestCase
         ]);
     }
 
-    private function download()
+    private function download(): Youtubedl
     {
         return $this->youtubedl
                     ->isVerbose(true)
                     ->download('https://www.youtube.com/watch?v=BaW_jenozKc');
     }
 
-    private function getRand()
+    private function getRand(): int
     {
         return mt_rand();
     }

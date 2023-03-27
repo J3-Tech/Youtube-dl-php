@@ -12,7 +12,7 @@ class OptionTest extends TestCase
     /**
      * @test
      */
-    public function shouldBeOption()
+    public function shouldBeOption(): void
     {
         $this->assertInstanceOf('Youtubedl\Option', $this->option->getListExtractors());
     }
@@ -20,7 +20,7 @@ class OptionTest extends TestCase
     /**
      * @test
      */
-    public function shouldEmptyOptionBeString()
+    public function shouldEmptyOptionBeString(): void
     {
         $this->assertIsArray($this->option->format());
     }
@@ -28,7 +28,7 @@ class OptionTest extends TestCase
     /**
      * @test
      */
-    public function shouldOptionBeString()
+    public function shouldOptionBeString(): void
     {
         $this->option->getListExtractors()
             ->setUserAgent('Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14');

@@ -11,7 +11,7 @@ class InstallationTest extends TestCase
     /**
      * @test
      */
-    public function shouldPostInstall()
+    public function shouldPostInstall(): void
     {
         Installation::postInstall();
         $this->assertTrue(Config::binExists());
@@ -20,7 +20,7 @@ class InstallationTest extends TestCase
     /**
      * @test
      */
-    public function shouldPostInstallWithoutBinary()
+    public function shouldPostInstallWithoutBinary(): void
     {
         unlink(Config::getBinFile());
         Installation::postInstall();
@@ -31,7 +31,7 @@ class InstallationTest extends TestCase
      * @test
      * @depends shouldPostInstall
      */
-    public function shouldPostUpdate()
+    public function shouldPostUpdate(): void
     {
         Installation::postUpdate();
         $this->assertTrue(Config::binExists());
@@ -41,7 +41,7 @@ class InstallationTest extends TestCase
      * @test
      * @depends shouldPostInstall
      */
-    public function shouldPostUpdateWithoutBinary()
+    public function shouldPostUpdateWithoutBinary(): void
     {
         unlink(Config::getBinFile());
         Installation::postUpdate();

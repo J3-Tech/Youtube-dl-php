@@ -13,7 +13,7 @@ class Option
 {
     protected $options = [];
 
-    public function __call($method, $args)
+    public function __call(string $method, mixed $args): Option
     {
         $cleanMethod = lcfirst(preg_replace('/get|set/', '', $method));
         if (preg_match_all('/[A-Z]/', $cleanMethod, $uppers)) {
@@ -26,7 +26,7 @@ class Option
         return $this;
     }
 
-    public function format()
+    public function format(): array
     {
         $output = [];
         foreach ($this->options as $key => $option) {
