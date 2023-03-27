@@ -16,7 +16,7 @@ Installation using [Composer](https://getcomposer.org):
 ```json
 {
     "require": {
-        "chellem/youtube-downloader": "^2"
+        "chellem/youtube-downloader": "^2.1.0"
     }
 }
 ```
