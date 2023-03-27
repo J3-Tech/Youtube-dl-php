@@ -48,7 +48,8 @@ class Youtubedl
 
     public function execute()
     {
-        $process = new Process(array_filter([Config::getBinFile(), (string) $this->option, $this->link]));
+        $commands = array_filter(array_merge([Config::getBinFile(), $this->link], $this->option->format()));
+        $process = new Process($commands);
         if ($this->verbose) {
             $process->run(function ($type, $buffer) {
                 echo "{$type} > {$buffer}";

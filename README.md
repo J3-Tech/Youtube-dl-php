@@ -81,3 +81,13 @@ $youtubedl->getOption()
           ->dumpUserAgent();
 echo $youtubedl->execute();
 ```
+
+### Convert to mp3
+
+```php
+$youtubedl->getOption()
+       ->extractAudio()
+       ->setAudioFormat("mp3");
+$youtubedl->isVerbose(true)
+        ->download('https://www.youtube.com/watch?v=BaW_jenozKc')->execute();
+```

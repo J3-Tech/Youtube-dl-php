@@ -22,7 +22,7 @@ class OptionTest extends TestCase
      */
     public function shouldEmptyOptionBeString()
     {
-        $this->assertIsString((string) $this->option);
+        $this->assertIsArray($this->option->format());
     }
 
     /**
@@ -32,7 +32,7 @@ class OptionTest extends TestCase
     {
         $this->option->getListExtractors()
             ->setUserAgent('Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14');
-        $this->assertIsString((string) $this->option);
+        $this->assertIsArray($this->option->format());
     }
 
     public function setUp(): void

@@ -21,21 +21,17 @@ class Option
                 $cleanMethod = str_replace($upper, '-'.strtolower($upper), $cleanMethod);
             }
         }
-        $this->options[$cleanMethod] = current($args) ? '"'.current($args).'"' : null;
+        $this->options[$cleanMethod] = current($args) ? current($args) : null;
 
         return $this;
     }
 
-    public function __toString()
+    public function format()
     {
-        return trim($this->format());
-    }
-
-    private function format()
-    {
-        $output = '';
+        $output = [];
         foreach ($this->options as $key => $option) {
-            $output .= "--{$key} {$option} ";
+            $output[] = "--{$key}";
+            $output[] = $option;
         }
 
         return $output;

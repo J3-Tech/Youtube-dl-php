@@ -42,7 +42,8 @@ class YoutubedlTest extends TestCase
     {
         $this->youtubedl->isVerbose(true);
         $this->youtubedl->getOption()
-            ->extractAudio();
+            ->extractAudio()
+            ->setAudioFormat('mp3');
         $this->download();
         $this->assertIsArray($this->youtubedl->execute());
     }
@@ -61,9 +62,6 @@ class YoutubedlTest extends TestCase
      */
     public function shouldSetLink()
     {
-        $this->youtubedl
-            ->getOption()
-            ->setOutput($this->getOutput());
         $this->assertInstanceOf('Youtubedl\Youtubedl', $this->download());
     }
 
@@ -72,9 +70,6 @@ class YoutubedlTest extends TestCase
      */
     public function shouldSetLinks()
     {
-        $this->youtubedl
-            ->getOption()
-            ->setOutput($this->getOutput());
         $this->assertInstanceOf('Youtubedl\Youtubedl', $this->downloads());
     }
 
@@ -106,11 +101,6 @@ class YoutubedlTest extends TestCase
                     ->download('https://www.youtube.com/watch?v=BaW_jenozKc');
     }
 
-    private function getOutput()
-    {
-        return "./tmp/%(title)s_{$this->getRand()}.%(ext)s";
-    }
-
     private function getRand()
     {
         return mt_rand();
@@ -119,11 +109,15 @@ class YoutubedlTest extends TestCase
     public function setUp(): void
     {
         $this->youtubedl = new Youtubedl();
+        $output = "./tmp/%(title)s_{$this->getRand()}.%(ext)s";
+        $this->youtubedl
+            ->getOption()
+            ->setOutput($output);
     }
 
     public function tearDown(): void
     {
-        foreach (glob('*.mp4') as $key => $value) {
+        foreach (glob('./tmp/*') as $key => $value) {
             unlink($value);
         }
     }
