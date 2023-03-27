@@ -85,6 +85,9 @@ echo $youtubedl->execute();
 ### Convert to mp3
 
 ```php
+use Youtubedl\Youtubedl;
+
+$youtubedl=new Youtubedl();
 $youtubedl->getOption()
        ->extractAudio()
        ->setAudioFormat("mp3");
