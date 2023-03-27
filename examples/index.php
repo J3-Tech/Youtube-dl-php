@@ -6,11 +6,16 @@ use Youtubedl\Youtubedl;
 
 $youtubedl = new Youtubedl();
 $youtubedl->getOption()
-        ->setOutput("'/tmp/%(title)s.%(ext)s'");
+       ->setOutput("./tmp/%(title)s.%(ext)s");
+$youtubedl->getOption()
+       ->extractAudio()
+       ->setAudioFormat("mp3");
 $youtubedl->isVerbose(true)
-        ->download('BaW_jenozKc')
-        ->getOption()
-        ->getListExtractors();
+        ->download('https://www.youtube.com/watch?v=BaW_jenozKc')->execute();
+
+$youtubedl
+         ->getOption()
+         ->getListExtractors();
 foreach ($youtubedl->execute() as $output) {
     echo "{$output}\n";
 }
