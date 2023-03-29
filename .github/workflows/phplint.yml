@@ -1,0 +1,24 @@
+name: PHPLint
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ "master" ]
+
+
+permissions:
+  contents: read
+
+jobs:
+  phplint:
+    runs-on: ubuntu-latest
+    name: PHP Lint
+    steps:
+    - uses: actions/checkout@v2
+    - id: PHP-Lint
+      uses: J3-Tech/PHP-Lint-Action@v0.0.3
+      with:
+        path: .
+        exclude: vendor
