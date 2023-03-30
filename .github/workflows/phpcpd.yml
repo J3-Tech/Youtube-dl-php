@@ -17,7 +17,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - id: PHP-CPD
-      uses: J3-Tech/PHPCpd-Action@v0.0.1
+      uses: J3-Tech/PHPCpd-Action@v0.0.2
       with:
         path: src
         exclude: vendor
+        minLines: 1
+        minTokens: 10
