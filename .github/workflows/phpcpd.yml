@@ -1,0 +1,23 @@
+name: PHPCPD
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ "master" ]
+
+permissions:
+  contents: read
+
+jobs:
+  phpcpd:
+    runs-on: ubuntu-latest
+    name: PHP CPD
+    steps:
+    - uses: actions/checkout@v2
+    - id: PHP-CPD
+      uses: J3-Tech/PHPCpd-Action@v0.0.1
+      with:
+        path: src
+        exclude: vendor
