@@ -43,8 +43,6 @@ class Installation
     private static function update(): void
     {
         $process = new Process([Config::getBinFile(), '-U']);
-        $process->run(function ($type, $buffer) {
-            echo "{$type} > {$buffer}";
-        });
+        Helper::runProcess($process);
     }
 }
