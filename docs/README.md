@@ -1,3 +1,0 @@
-- [Installation](installation)
-- [Examples](examples)
-- [TODO](TODO)

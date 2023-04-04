@@ -1,1 +1,0 @@
-* async download (non-blocking)
