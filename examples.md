@@ -7,7 +7,7 @@ use Youtubedl\Youtubedl;
 $youtubedl=new Youtubedl();
 $youtubedl->getOption()
           ->setOutput("\"/tmp/%(title)s.%(ext)s\"");
-$youtubedl->download('BaW_jenozKc')
+$youtubedl->download('https://www.youtube.com/watch?v=BaW_jenozKc')
           ->execute();
 ```
 
@@ -19,40 +19,22 @@ use Youtubedl\Youtubedl;
 $youtubedl=new Youtubedl();
 $youtubedl->getOption()
           ->setOutput("\"/tmp/%(title)s.%(ext)s\"");
-$youtubedl->download(array('BaW_jenozKc','dOibtqWo6z4'))
+$youtubedl->download([
+    'https://www.youtube.com/watch?v=BaW_jenozKc',
+    'https://www.youtube.com/watch?v=dOibtqWo6z4'
+])->execute();
+```
+
+### Audio Extract
+
+```php
+$youtubedl = new Youtubedl();
+$youtubedl->getOption()
+          ->setOutput("./tmp/%(title)s.%(ext)s");
+$youtubedl->getOption()
+          ->extractAudio()
+          ->setAudioFormat("mp3");
+$youtubedl->isVerbose(true)
+          ->download('https://www.youtube.com/watch?v=BaW_jenozKc')
           ->execute();
-```
-
-### Extractor List
-
-```php
-use Youtubedl\Youtubedl;
-
-$youtubedl=new Youtubedl();
-$youtubedl->getOption()
-          ->getListExtractors();
-echo $youtubedl->execute();
-```
-
-### Extractor Descriptions
-
-```php
-use Youtubedl\Youtubedl;
-
-$youtubedl=new Youtubedl();
-$youtubedl->getOption()
-          ->getExtractorDescriptions();
-echo $youtubedl->execute();
-```
-
-### User Agent
-
-```php
-use Youtubedl\Youtubedl;
-
-$youtubedl=new Youtubedl();
-$youtubedl->getOption()
-          ->setUserAgent('Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14')
-          ->dumpUserAgent();
-echo $youtubedl->execute();
 ```
