@@ -3,6 +3,9 @@ plugins:
   - jekyll-remote-theme
 
 title: Youtube-dl-php
-description: Youtube-dl php wrapper
+description: Youtube-dl php sdk
+
+github:
+  zip_url:  https://github.com/J3-Tech/Youtube-dl-php/archive/refs/tags/v2.1.0.zip
 
 google_analytics: G-2LMNXJTB9D
