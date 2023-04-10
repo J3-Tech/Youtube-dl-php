@@ -6,7 +6,4 @@ plugins:
 title: Youtube-dl-php
 description: Youtube-dl php wrapper
 
-jekyll_analytics:
-  GoogleAnalytics:
-    id: G-2LMNXJTB9D
-    anonymizeIp: false
+google_analytics: G-2LMNXJTB9D
